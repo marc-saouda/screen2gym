@@ -150,45 +150,53 @@ CI (`.github/workflows/ci.yml`) runs the offline subset on every push.
 
 ---
 
-## Scalability & Autonomy (roadmap)
+## Scaling the approach
 
-The brief only requires a minimal pipeline today, but the same structure is the seed
-of an autonomous **data flywheel**:
+This repository was itself built with an AI coding agent (Cursor), and that is the
+core of the scalability argument. The steps that turn a recording into an environment
+— segmenting the session, extracting the task/initial-state seed, and generating the
+`rl_env` apps and grader — are themselves agent-friendly tasks, not bespoke
+hand-engineering. So the approach extends beyond this one recording without rebuilding
+it by hand each time:
 
 ```mermaid
 flowchart LR
-  A["1 · Compile recordings<br/>(deterministic + VLM)"] --> B["2 · Auto-label data<br/>segment.py = labeling fn"]
-  B --> C["3 · Distill / fine-tune<br/>seed + segmentation steps"]
-  C --> D["4 · RL-train agents<br/>envs = verifiable reward"]
-  D --> A
+  rec["screen recording"] --> pre
+  subgraph agent ["steps an agent can automate"]
+    pre["pre-compiler<br/>segment + extract seed"] --> gen["generate rl_env<br/>apps + grader"]
+  end
+  gen --> env["trainable environment"]
 ```
 
-- **Skills.** The object-level workflow (recording → seed → env) is already codified,
-  and its prompts live in the repo (`vlm.py`, `segment.py`, `judge.py`), so it lifts
-  cleanly into a reusable "Environment Compiler" skill.
-- **Fine-tuning segmentation/seed extraction — defensible now.** `segment.py` is a
-  deterministic *labeling function*: run it over many recordings and it auto-emits
-  `(events → episodes)` and `(frames → seed)` pairs — a ready-made distillation set.
-- **An automatic reward for env quality.** `curriculum_runner.py` already checks that
-  each generated episode is oracle-solvable *and* discriminates wrong attempts — i.e.
-  a built-in quality signal for training/evaluating an env-generator.
-- **Honest limit.** *Full* environment generation (seed → bespoke simulator + grader)
-  is roadmap, not done: it is gated on a multi-task corpus (today this is `n = 1`).
-  The seed/segmentation half is the immediately defensible claim.
+- **Automate the pre-compiler.** Event segmentation and seed extraction are well-scoped,
+  repeatable tasks. A capable agent can do them directly; a small, cheap model can be
+  fine-tuned for them; or a strong model can handle a handful of recordings and the rest
+  can be few-shot prompted from those examples when they are similar enough.
+- **Automate `rl_env` generation.** The same agent-driven process that produced the
+  simulated apps and grader here can generate them for new tasks, driven by the seed
+  rather than written by hand.
+- **App-agnostic.** None of this depends on the specific apps in the recording
+  (Sheets / Slack / Zapier here); it is about the structure of a computer-use session,
+  so it transfers to other tools and workflows.
+
+This is a direction the design already supports rather than something fully automated
+today: the repository demonstrates the end-to-end path on one task, and its artifacts
+(`seed.json`, `curriculum.json`, and the per-episode checks) are exactly the interfaces
+an agent would target when scaling it up.
 
 ---
 
-## Future work / better approaches
+## Possible extensions
 
-- **Generalize the grader.** Today the env hard-codes Salt & Stone column roles and a
-  fixed check registry (`rl_env/harness/environment.py`). A data-driven grader spec in
-  the seed would let other recordings yield environments without code changes.
-- **Auto-generate the simulator.** Replace the hand-built apps with apps synthesized
-  from `initial_state` (routes, forms, state model), making step 4 of the flywheel real.
-- **Packaging & reproducibility.** A `pyproject.toml` (removing the `sys.path` shims)
-  and a `Dockerfile` would make installs deterministic across machines.
-- **Model abstraction.** Make the VLM/judge model names + providers configurable and
-  lean on structured outputs / function calling.
+A few concrete, optional directions (none required for the task as posed):
+
+- **Data-driven grader.** The grader currently encodes this task's column roles and
+  checks in `rl_env/harness/environment.py`; moving that spec into the seed would let
+  other recordings produce environments without code changes.
+- **Packaging.** A `pyproject.toml` and a `Dockerfile` would make installs reproducible
+  across machines (and remove the `sys.path` shims).
+- **Model configuration.** Make the VLM/judge model names and providers configurable,
+  and lean on structured outputs.
 
 ---
 

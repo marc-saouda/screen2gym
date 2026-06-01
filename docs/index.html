@@ -145,20 +145,16 @@
   .why h3{font-size:16px; margin:8px 0 6px}
   .why p{font-size:13px; color:var(--muted); margin:0}
 
-  /* flywheel */
-  .flyrow{display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; margin-top:20px}
-  @media(max-width:760px){.flyrow{grid-template-columns:1fr}}
-  .wheel{position:relative; width:340px; height:340px; margin:0 auto}
-  .wheel svg{width:100%; height:100%}
-  .spoke{cursor:pointer}
-  .spoke circle{transition:.3s}
-  .spoke.on circle{filter:drop-shadow(0 0 10px rgba(58,208,196,.7))}
-  .wheel .hubtxt{font-weight:800; font-size:14px; fill:var(--ink)}
-  .fly-detail{border:1px solid var(--line); border-radius:12px; padding:18px; background:var(--panel)}
-  .fly-detail h3{margin:0 0 6px; font-size:18px}
-  .fly-detail p{color:var(--muted); margin:.3em 0}
-  .note{margin-top:14px; border-left:3px solid var(--amber); padding:8px 12px; background:rgba(246,193,119,.07); border-radius:8px; font-size:13px; color:var(--muted)}
-  .note b{color:var(--amber)}
+  /* scaling — authoring flow */
+  .stage.auto{cursor:pointer}
+  .stage.auto .box{border-color:rgba(167,139,250,.55); box-shadow:0 0 0 1px rgba(167,139,250,.30)}
+  .stage.auto.pick .box{background:linear-gradient(180deg,#241a3a,var(--panel)); box-shadow:0 0 0 1px var(--violet),0 12px 30px rgba(167,139,250,.22); transform:translateY(-3px)}
+  .stage .tag{display:inline-block; margin-top:8px; font-size:10px; padding:2px 8px; border-radius:999px}
+  .tag.agent{background:rgba(167,139,250,.14); color:var(--violet); border:1px solid rgba(167,139,250,.4)}
+  .tag.fixed{background:rgba(147,164,189,.08); color:var(--muted); border:1px solid var(--line)}
+  .agentbar{display:flex; align-items:center; gap:10px; margin:18px 0 2px; flex-wrap:wrap; color:var(--muted); font-size:13.5px}
+  .agentchip{border:1px solid var(--line); border-radius:999px; padding:7px 13px; background:var(--panel); font-size:12.5px}
+  .agentchip b{color:var(--ink)}
 
   footer{padding:40px 0 70px; color:var(--muted); font-size:13px; border-top:1px solid var(--line)}
   .reveal{opacity:0; transform:translateY(14px); transition:.6s}
@@ -332,15 +328,27 @@
 
 <section id="scale">
   <div class="wrap">
-    <div class="eyebrow">Scalability &amp; autonomy · roadmap</div>
-    <h2>From one task to a self-feeding flywheel</h2>
-    <p class="sub">The brief only needs a minimal pipeline today — but the same structure is the seed of an autonomous loop. Click a stage of the flywheel:</p>
-    <div class="flyrow">
-      <div class="wheel" id="wheel"></div>
-      <div class="fly-detail">
-        <h3 id="fly-title">—</h3>
-        <p id="fly-body"></p>
-        <div class="note" id="fly-note"></div>
+    <div class="eyebrow">Scalability · built with Cursor</div>
+    <h2>Scaling the approach</h2>
+    <p class="sub">This repository was itself built with an AI coding agent (Cursor) — and that is the heart of the scalability argument. The steps that turn a recording into an environment (segmenting the session, extracting the seed, generating the <span class="mono">rl_env</span>) are themselves agent-friendly tasks, not bespoke hand-engineering. So the same approach extends beyond one recording by <b>automating those steps with agents</b>. The two purple stages are the ones an agent takes over — click them:</p>
+
+    <div class="flow" id="authflow"></div>
+    <div class="detail" id="scaledetail"></div>
+
+    <div class="agentbar">
+      <span>Two practical ways to automate those steps:</span>
+      <span class="agentchip"><b>Fine-tune</b> a small, cheap model for these well-scoped tasks</span>
+      <span class="agentchip"><b>or</b> use a strong model on ~10 recordings and few-shot the rest when similar</span>
+    </div>
+
+    <div class="two" style="margin-top:18px">
+      <div class="card">
+        <h3><span class="pill violet">App-agnostic</span> Not tied to these apps</h3>
+        <p class="sub" style="margin-top:6px">Nothing here depends on Sheets / Slack / Zapier specifically. The process is about the structure of a computer-use session, so it transfers to other tools and workflows.</p>
+      </div>
+      <div class="card">
+        <h3><span class="pill teal">Where it stands</span> A supported direction</h3>
+        <p class="sub" style="margin-top:6px">A direction the design already supports — not a claim that it is fully automated today. The repo shows the end-to-end path on one task, and its artifacts (<span class="mono">seed.json</span>, <span class="mono">curriculum.json</span>, the per-episode checks) are exactly the interfaces an agent would target when scaling up.</p>
       </div>
     </div>
   </div>
@@ -498,66 +506,34 @@ function showEp(i){
 }
 showEp(0);
 
-/* ---------- flywheel ---------- */
-var FLY=[
-  {t:'1 · Compile recordings', b:'The deterministic pipeline turns each recording into an inspectable seed + curriculum — no human labeling required for the structure.',
-   note:'<b>Today:</b> this is the working, minimal system the brief asks for.'},
-  {t:'2 · Auto-label training data', b:'Because segment.py is a deterministic labeling function, every recording yields (events → episodes) and (frames → seed) pairs at scale.',
-   note:'<b>Lever:</b> the pipeline is its own data generator — bootstrap a dataset for free.'},
-  {t:'3 · Distill / fine-tune the steps', b:'Use those pairs to fine-tune models that do seed extraction and segmentation directly — cheaper, faster, and less dependent on a frontier VLM per run.',
-   note:'<b>Reward signal:</b> curriculum_runner already checks each episode is oracle-solvable AND discriminates wrong attempts — an automatic quality score for generated environments.'},
-  {t:'4 · Train agents in the envs', b:'Each environment is a verifiable reward source (grader + judge), so the generated envs RL-train computer-use agents — whose better recordings feed step 1 again.',
-   note:'<b>Honest limit:</b> full env-generation is roadmap, not done — it is gated on a multi-task corpus (today n=1). The seed/segmentation half is the immediately defensible claim.'}
+/* ---------- scaling — authoring flow ---------- */
+var AUTH=[
+  {t:'Screen recording', det:'raw capture + events', auto:false},
+  {t:'Pre-compiler', det:'segment + extract seed', auto:true,
+   long:'Slicing the session into episodes and extracting the task + initial-state seed are well-scoped, repeatable tasks — exactly the kind an agent is good at. Fine-tune a small model to do them cheaply, or have a strong model handle ~10 recordings and few-shot the rest when they are similar enough.'},
+  {t:'seed + curriculum', det:'the JSON contract', auto:false},
+  {t:'rl_env generation', det:'apps + grader', auto:true,
+   long:'The same agent-driven process that produced the simulated apps and grader in this repo can generate them for new tasks — driven by the seed, rather than written by hand each time.'},
+  {t:'Trainable env', det:'resettable + gradeable', auto:false}
 ];
-var wheel=document.getElementById('wheel');
-var NS='http://www.w3.org/2000/svg';
-var svg=document.createElementNS(NS,'svg'); svg.setAttribute('viewBox','0 0 340 340');
-var cx=170, cy=170, R=120;
-// rotating highlight ring
-var ring=document.createElementNS(NS,'circle');
-ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);ring.setAttribute('r',R);
-ring.setAttribute('fill','none');ring.setAttribute('stroke','url(#g)');ring.setAttribute('stroke-width','3');
-ring.setAttribute('stroke-dasharray','6 10');ring.setAttribute('opacity','.5');
-var defs=document.createElementNS(NS,'defs');
-defs.innerHTML='<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ad0c4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>';
-svg.appendChild(defs); svg.appendChild(ring);
-// arrows around the ring (cyclic)
-var hub=document.createElementNS(NS,'g');
-var hubc=document.createElementNS(NS,'circle'); hubc.setAttribute('cx',cx);hubc.setAttribute('cy',cy);hubc.setAttribute('r',46);
-hubc.setAttribute('fill','#16233b'); hubc.setAttribute('stroke','#22324c');
-hub.appendChild(hubc);
-var hubt1=document.createElementNS(NS,'text'); hubt1.setAttribute('x',cx);hubt1.setAttribute('y',cy-4);
-hubt1.setAttribute('text-anchor','middle');hubt1.setAttribute('class','hubtxt');hubt1.textContent='data';
-var hubt2=document.createElementNS(NS,'text'); hubt2.setAttribute('x',cx);hubt2.setAttribute('y',cy+15);
-hubt2.setAttribute('text-anchor','middle');hubt2.setAttribute('class','hubtxt');hubt2.textContent='flywheel';
-svg.appendChild(hub); svg.appendChild(hubt1); svg.appendChild(hubt2);
-var spokes=[];
-FLY.forEach(function(f,i){
-  var ang=(-90+i*90)*Math.PI/180;
-  var x=cx+Math.cos(ang)*R, y=cy+Math.sin(ang)*R;
-  var g=document.createElementNS(NS,'g'); g.setAttribute('class','spoke'); g.dataset.i=i; g.style.cursor='pointer';
-  var c=document.createElementNS(NS,'circle'); c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',26);
-  c.setAttribute('fill','#111c30'); c.setAttribute('stroke','#3ad0c4'); c.setAttribute('stroke-width','2');
-  var t=document.createElementNS(NS,'text'); t.setAttribute('x',x);t.setAttribute('y',y+6);
-  t.setAttribute('text-anchor','middle');t.setAttribute('font-weight','800');t.setAttribute('font-size','18');t.setAttribute('fill','#e8eef7');
-  t.textContent=(i+1);
-  g.appendChild(c); g.appendChild(t);
-  g.addEventListener('click',function(){showFly(i);});
-  svg.appendChild(g); spokes.push(g);
+var authflow=document.getElementById('authflow');
+var pickable=[];
+AUTH.forEach(function(s,i){
+  if(i>0){var ar=document.createElement('div');ar.className='arrow';ar.textContent='→';authflow.appendChild(ar);}
+  var d=document.createElement('div'); d.className='stage'+(s.auto?' auto':''); d.dataset.i=i;
+  d.innerHTML='<div class="box"><div class="t">'+s.t+'</div><div class="det">'+s.det+'</div>'+
+    '<span class="tag '+(s.auto?'agent':'fixed')+'">'+(s.auto?'agent-automatable':'fixed I/O')+'</span></div>';
+  if(s.auto){ d.addEventListener('click',function(){showAuth(i);}); pickable.push(i); }
+  authflow.appendChild(d);
 });
-wheel.appendChild(svg);
-function showFly(i){
-  spokes.forEach(function(g){g.classList.toggle('on',+g.dataset.i===i);});
-  document.getElementById('fly-title').textContent=FLY[i].t;
-  document.getElementById('fly-body').textContent=FLY[i].b;
-  document.getElementById('fly-note').innerHTML=FLY[i].note;
+function showAuth(i){
+  var s=AUTH[i];
+  document.querySelectorAll('#authflow .stage').forEach(function(el){el.classList.toggle('pick', +el.dataset.i===i);});
+  document.getElementById('scaledetail').innerHTML=
+    '<h4>'+s.t+' <span class="badge-det det-vlm">agent-automatable</span></h4>'+
+    '<p class="sub" style="margin:.2em 0">'+s.long+'</p>';
 }
-showFly(0);
-var flyAuto=setInterval(function(){
-  var cur=0; spokes.forEach(function(g,idx){if(g.classList.contains('on'))cur=idx;});
-  showFly((cur+1)%FLY.length);
-},3800);
-document.getElementById('wheel').addEventListener('click',function(){clearInterval(flyAuto);},{once:true});
+showAuth(pickable[0]);
 
 /* ---------- reveal on scroll + stats ---------- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
