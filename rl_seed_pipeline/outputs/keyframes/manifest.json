@@ -1,0 +1,98 @@
+[
+  {
+    "offset": 0.0,
+    "label": "postwork",
+    "note": "",
+    "source": "video",
+    "url": null,
+    "path": "outputs/keyframes/kf_00_0s.jpg"
+  },
+  {
+    "offset": 17.45,
+    "label": "postwork",
+    "note": "click at (1756,11)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/10c74dfc-b71c-42bd-8b12-400c86ec029d_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_01_17s.jpg"
+  },
+  {
+    "offset": 17.95,
+    "label": "Windows Explorer",
+    "note": "double-click at (24,664)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/77eee0c1-d8fe-4249-87d2-be739732b414_before_v2.jpg",
+    "path": "outputs/keyframes/kf_02_17s.jpg"
+  },
+  {
+    "offset": 23.86,
+    "label": "WPS Office",
+    "note": "click at (127,289)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/be13c800-1154-4e62-9dae-e1efca4ac8aa_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_03_23s.jpg"
+  },
+  {
+    "offset": 52.66,
+    "label": "Windows Explorer",
+    "note": "click at (1195,1066)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/44497df9-e918-48c0-8ffb-a0da7504f3e8_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_04_52s.jpg"
+  },
+  {
+    "offset": 54.03,
+    "label": "Google Chrome",
+    "note": "click at (440,79)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/42b343f7-d7dc-4a7c-930a-11ba40b6c824_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_05_54s.jpg"
+  },
+  {
+    "offset": 113.98,
+    "label": "WPS Office",
+    "note": "click at (1180,1055)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/0620ab2e-4c3b-4a63-8676-6e98b6330667_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_06_113s.jpg"
+  },
+  {
+    "offset": 115.53,
+    "label": "Google Chrome (docs.google.com)",
+    "note": "click at (152,337)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/bcd1bc02-6006-4a21-b9d3-74a70738e4e1_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_07_115s.jpg"
+  },
+  {
+    "offset": 913.89,
+    "label": "Google Chrome (zapier.com)",
+    "note": "click at (1535,668)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/ebbc83e4-7698-4821-a943-03226d06ca7c_after_v2.jpg",
+    "path": "outputs/keyframes/kf_08_913s.jpg"
+  },
+  {
+    "offset": 1828.25,
+    "label": "Google Chrome (zapier.com)",
+    "note": "",
+    "source": "video",
+    "url": null,
+    "path": "outputs/keyframes/kf_09_1828s.jpg"
+  },
+  {
+    "offset": 2742.24,
+    "label": "Google Chrome (docs.google.com)",
+    "note": "click at (835,681)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/f583e3ae-a19e-4750-ac07-9a5515069572_before_v2.jpg",
+    "path": "outputs/keyframes/kf_10_2742s.jpg"
+  },
+  {
+    "offset": 3656.5,
+    "label": "Google Chrome (zapier.com)",
+    "note": "click at (197,710)",
+    "source": "remote",
+    "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/db81439c-bb84-4166-a7cb-c44da16564c8_at_start_v2.jpg",
+    "path": "outputs/keyframes/kf_11_3656s.jpg"
+  }
+]

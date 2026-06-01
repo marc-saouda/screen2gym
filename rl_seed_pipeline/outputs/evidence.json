@@ -1,0 +1,1081 @@
+{
+  "summary": {
+    "duration_seconds": 3656.5,
+    "n_events": 1197,
+    "applications": [
+      "Google Chrome",
+      "WPS Office",
+      "postwork",
+      "Windows Explorer"
+    ],
+    "time_per_application": {
+      "Google Chrome": 3595.1,
+      "WPS Office": 27.4,
+      "postwork": 0.0,
+      "Windows Explorer": 0.0
+    },
+    "domains": [
+      "google.com",
+      "docs.google.com",
+      "slack.com",
+      "main-dyd9530.slack.com",
+      "app.slack.com",
+      "zapier.com",
+      "accounts.google.com"
+    ],
+    "n_app_switches": 7
+  },
+  "brief_text": "",
+  "visited_urls": [
+    {
+      "t": 66.75,
+      "url": "https://google.com/search?q=google+sheets&oq=Google+Sheets&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIGCAYQRRg8MgYIBxBFGDzSAQg4ODI2ajBqN6gCCLACAfEFBeTuwEJ0neE&sourceid=chrome&ie=UTF-8"
+    },
+    {
+      "t": 73.03,
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0"
+    },
+    {
+      "t": 420.74,
+      "url": "https://google.com/search?q=slack&oq=Slack&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBggDEEUYPDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMjQ0M2owajeoAgCwAgA&sourceid=chrome&ie=UTF-8"
+    },
+    {
+      "t": 424.69,
+      "url": "https://slack.com"
+    },
+    {
+      "t": 435.05,
+      "url": "https://main-dyd9530.slack.com/ssb/redirect?_gl=1*6xhtf2*_gcl_au*MTU3NDUzNDA3NC4xNzc3NTc3NTQ4"
+    },
+    {
+      "t": 442.11,
+      "url": "https://app.slack.com/client/T0B0HV9QQBZ/C0B0UUMS1ST"
+    },
+    {
+      "t": 475.42,
+      "url": "https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG"
+    },
+    {
+      "t": 484.43,
+      "url": "https://google.com/search?q=zapier&oq=Zapier&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyEggBEC4YQxjHARjRAxiABBiKBTIGCAIQRRg8MgYIAxBFGDwyBggEEEUYPDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwMTVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8"
+    },
+    {
+      "t": 492.11,
+      "url": "https://zapier.com/l/home?utm_source=google&utm_medium=cpc&utm_campaign=gaw-gbl-nua-search-brand-remarketing&utm_term=zapier&utm_content=1005570&utm_ads_campaign_id=17613359682&utm_ads_adset_id=136156400777&utm_ads_ad_id=747677518063&gad_source=1&gad_campaignid=17613359682&gbraid=0AAAAAC6ACE4IUmsCmD8jXJnfaCIeCYWuf&gclid=CjwKCAjw5NvPBhAoEiwA_2egfsaYHzeenrOxv_cG2rP9-M3DnIf4LCLFkgSDO2Hyk8j5wg9HaP2H7RoCzKcQAvD_BwE"
+    },
+    {
+      "t": 498.31,
+      "url": "https://zapier.com/app/home?conversationId=beee5314-89fd-41da-92af-b7c8c08be338"
+    },
+    {
+      "t": 508.14,
+      "url": "https://zapier.com/editor?attempt_id=2152cc78-0cdc-4102-8043-ac83dc110e02&conversationId=72f0db44-07ce-4199-afc8-f924ff2042c8"
+    },
+    {
+      "t": 528.99,
+      "url": "https://zapier.com/editor/362381996/draft"
+    },
+    {
+      "t": 530.14,
+      "url": "https://zapier.com/editor/362381996/draft/362381996/setup"
+    },
+    {
+      "t": 576.2,
+      "url": "https://zapier.com/engine/auth/start/GoogleSheetsV2CLIAPI@2.12.0/?_zapier_account_id=27193866"
+    },
+    {
+      "t": 579.88,
+      "url": "https://accounts.google.com/v3/signin/accountchooser?access_type=offline&client_id=927538837578.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fzapier.com%2Fdashboard%2Fauth%2Foauth%2Freturn%2FGoogleSheetsV2CLIAPI%2F&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fspreadsheets+email&state=_wG4gtTeH0TZ4QSxum-Gbmef8JoPD_y6PeigPWidzz4&dsh=S-1138801208%3A1777806717567298&o2v=2&service=lso&flowName=GeneralOAuthFlow&opparams=%253F&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANCek1Uc3uMuM5r1w_KbvGJm7kZP135JrtmFqH0h9zw7_6l9lr0iR7n7wk8LgXIQhz2iaXFKVPD_ge9iCP9zzYe74Pw7msRIiqAzS5Id5XZm5NZWGoRSs_nGeLd35e13qU1sW-ICzgA4W8IjKLuMBTorcrwwcJvZxaNjtE6ewM1fOUGEJ_JXXsNtkLSCA_rnnl7M-Wl3-2qPeS2vbOwqxhE-doWhKTZgIKTUQt06Ukpb8vL3csmSX6v0d2uFoIFsQmLZtIi_yT9hdI4-YzcrCIsVxXp8Am4fIFV6DRD7cCDOnPBA92_RUoiP4LVmnLO48qCsHCs8dOudKGWK70COBNWN5fzvnNiGLHNvu4a8nWMQ0wWvZrAvc50fsAQ-0_ZE4xqBu7PnraZHIoU4PLinwqe8usJ526_xTgNjuVh9hiRsr70eJU%26flowName%3DGeneralOAuthFlow%26as%3DS-1138801208%253A1777806717567298%26client_id%3D927538837578.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=https%3A%2F%2Fzapier.com"
+    },
+    {
+      "t": 585.5,
+      "url": "https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAOTaM9afKB1OV36sMb64UzxY-8NrKDXqja9Eo5V6cLBIIfiDFiXuVa6OpkOD4rlEPFqZ_0U_7v0dN3whajdVKHByFJLonPmPJUri30GRd-NYNgJlqKep3NBubYaHMVt4oIFq4Vb3g2PUYsOoi7Yx5oKmjiVEzwSCvateGS8lIkeOurQ0qgeaUzgePYkv1Cq6oRbZEkkq_i2RmTSer5P5aDbFo23TW_g3hNaAOcC10pKIriocpmwqIA-ceIwoQnThQLNdpEw8sM6ghBzGYg4c2SfxkAWzouPpJn1ZrOP2yNdwzqccSq88QfukQVZrEdTo0-QfKHJiny_wAkTNj_DTUYBWcV1MFreYmJuHfDYTuZ_g_zybR6xAe_q_Xm1JlNfVHuyKyP0EZr1ihsoALAExN5-jLWy6k8E4EBxDTicJp9HdjM7oYgcI8FgVOHb_Q509BErW90HBPmA2QRH8zx8a4WH3rlLvOPzVRBifGOeIlwub4vORzi-Z7qkPOithiyEs7-tWPmN0MQI8AVBooMNxP35FJmf_HAo2-CW_l26YVooa6HtCrh4-L1iOeKAULL8PXBIfzZLlBxSmTw1jFqUkd5RnRh85QxxTlD6elX2eGNihaXjVgvPjeQ8KHAAIFgU4f4xxVZpuoLD20jVtTRMyPa7aTYCgtAzvhi7JstP_1hfKiY4IN8gtMz7SCeb8cJ_lWUg5V6knP_8uwMMUahCcOCJ4NeBVHsNiSs19UU9lU5Aw92uD3oUdNwLhiGNi9z9zOlucMZn8yhHbAswpBofhfhr7AmTor5ExHy1iw7PC3ZE0zVqnAgIKiOOn1ofnJb5ftFsKEwV_IfFBXyN1ZBCSuvYLJKA5nyeGTHQdMnfQpNIUJFzmd_J_lfRE77ZveUU-2ovtsVmKiMPXPolPY9H2HUobDPEiwO_Cf61Dx6V3sUPs6yKrTOwIOw__IYuIeSXnK-99bcAo1X8CM2jmxSDi7d_SCRmmQ&flowName=GeneralOAuthFlow&as=S-1138801208%3A1777806717567298&client_id=927538837578.apps.googleusercontent.com&rapt=AEjHL4Ml68PWl8Q-uj_DqtDXPAhyhH4N_sS1AI7wnnBy9unqsrI9qNndwoDO7fj89H7WIT4OeBwUeuEhYmgN2XFLegZnGsoCSzRS1OHU3d0sivQmVdSmQfM#"
+    },
+    {
+      "t": 593.38,
+      "url": "https://accounts.google.com/signin/oauth/v2/consentsummary?as=S-1138801208%3A1777806717567298&authuser=0&client_id=927538837578.apps.googleusercontent.com&flowName=GeneralOAuthFlow&part=AJi8hAMQte5rRSVfHXwAYjPPtl7I5jo5s-Kkn9I-1Wno3IMisqZ6p-vaEKOvcZElmEsjOv47Z-w8LrXUNLg5nOr_Jwxsfm3qnay0EN03B5gyaYpl4oLYzlTjFe4sw3OjVvvtL_pmPz3UvLrJFz9OjkfZP7kjv244RVS1Eyza-ILbdGp19kg2WVx2MFLIMFXhwW6JKnQycXXByxG9bP6tg7fdD0z2zzdrIyBv2nH_VeAK21Pg5tL3jj3Fceuk0mcLpwZsYKwniu2dTAu4NRH_8bURTTIF_ZrVBwORd7nrN6THFRa2pTA9SbG0zRZ21DajEu5DkppnoKFUdMmxFpc8B-I4Ey-ip8-7G57lGwxKYBDxCFt-Cw-RCdjRqnxKqjfJaNOLrWpF3e7eqI9SxUl1PGF0IPYerNF6HqSPX8QTdHLOFtnSFfCwUpje-Tm8Lk2wk2qEr-BjXhLWZvzqreblXVcmw9AjIMIBJXFcjOSoOVHT42iZz3W0TOCsWv8Gknz3X8UTEiL0KNSOE7aKSvqgsa6xfpXty4EXm0Qb8HuEiOcWAqg2FX5FZaWnS2IcTZRsiTTV5hS9frQ0Inf0FIBTMaH3qo7v0qup1KS-U0jm7pOrKwYraQcSL8JySfS-9tLCZdW2S6qHh5iNorWVtgedwTyr9P3hEBUB6TnQgYbjravK-V9LA-v9oBuq0c2v-iPsLHFyfhkcKn2jDzbWygRi_ImelHx78o4-NHnjJA_h4nNHLQZrz41x-Ol57N11fINrTG-FX_-b8lc00524_EPeX6JY9iKrCdlPjPImzHMreETFtwcNbwO29mTIDs2-Qbb4eSikSWMC3FLWUxSaIGu6iMop9-ZzbunmLpvW3ye109jU64kgeqsG0WaCVqch3uuOKusYpJZPJBA6gi7JQKK-uhyhV3KHL-NpZE8hfT85bTNWPo58-bHLFhtuhLrw2D8kB1GW3AZd1SsEdiZd0R1F1DN5wvoyBJMAXw&rapt=AEjHL4Ml68PWl8Q-uj_DqtDXPAhyhH4N_sS1AI7wnnBy9unqsrI9qNndwoDO7fj89H7WIT4OeBwUeuEhYmgN2XFLegZnGsoCSzRS1OHU3d0sivQmVdSmQfM&xsrf=ACyENv9OHIkLg0RvsNM5lQhSVt49%3A1777806723077"
+    },
+    {
+      "t": 607.27,
+      "url": "https://zapier.com/editor/362381996/draft/362381996/fields"
+    },
+    {
+      "t": 624.16,
+      "url": "https://zapier.com/editor/362381996/draft/362381996/sample"
+    },
+    {
+      "t": 630.06,
+      "url": "https://zapier.com/editor/362381996/draft/362381997/setup"
+    },
+    {
+      "t": 662.47,
+      "url": "https://zapier.com/engine/auth/start/SlackCLIAPI@1.38.0/?_zapier_account_id=27193866"
+    },
+    {
+      "t": 665.8,
+      "url": "https://main-dyd9530.slack.com/oauth?client_id=2165348927.2161329837&scope=canvases%3Aread%2Ccanvases%3Awrite%2Cchannels%3Ahistory%2Cchannels%3Ajoin%2Cchannels%3Amanage%2Cchannels%3Aread%2Cchat%3Awrite%2Cchat%3Awrite.customize%2Cchat%3Awrite.public%2Ccommands%2Cemoji%3Aread%2Cfiles%3Aread%2Cfiles%3Awrite%2Cgroups%3Ahistory%2Cgroups%3Aread%2Cgroups%3Awrite%2Cim%3Aread%2Cim%3Awrite%2Cmpim%3Aread%2Cmpim%3Awrite%2Creactions%3Aread%2Cteam%3Aread%2Cusers.profile%3Aread%2Cusers%3Aread%2Cusers%3Aread.email&user_scope=canvases%3Aread%2Ccanvases%3Awrite%2Cchannels%3Ahistory%2Cchannels%3Aread%2Cchannels%3Awrite%2Cchat%3Awrite%2Cemoji%3Aread%2Cfiles%3Aread%2Cfiles%3Awrite%2Cgroups%3Ahistory%2Cgroups%3Aread%2Cgroups%3Awrite%2Cim%3Aread%2Cim%3Awrite%2Cmpim%3Aread%2Cmpim%3Awrite%2Creactions%3Aread%2Creactions%3Awrite%2Creminders%3Aread%2Creminders%3Awrite%2Csearch%3Aread%2Cstars%3Aread%2Cteam%3Aread%2Cusers.profile%3Awrite%2Cusers%3Aread%2Cusers%3Aread.email&redirect_uri=https%3A%2F%2Fzapier.com%2Fdashboard%2Fauth%2Foauth%2Freturn%2FSlackCLIAPI%2F&state=sHLUIayXJ7bQVY06Si5G3KldN0J2HWu-Zh20qtgCgh0&granular_bot_scope=1&single_channel=0&install_redirect=&tracked=1&user_default=0&response_type=code&team="
+    },
+    {
+      "t": 684.94,
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields"
+    },
+    {
+      "t": 936.35,
+      "url": "https://zapier.com/editor/362381996/draft/362381997/sample"
+    },
+    {
+      "t": 960.22,
+      "url": "https://zapier.com/editor/362381996/published/362381997/sample"
+    },
+    {
+      "t": 967.35,
+      "url": "https://zapier.com/editor/362381996/published/362381996/fields"
+    },
+    {
+      "t": 967.7,
+      "url": "https://zapier.com/editor/362381996/published/362381997/fields"
+    },
+    {
+      "t": 974.83,
+      "url": "https://zapier.com/editor/362381996/published"
+    },
+    {
+      "t": 2040.53,
+      "url": "https://zapier.com/templates/details/real-time-booking-alerts-to-slack-from-sheets-6afe67?secret=MTp0ZW1wbGF0ZTpIRzVteVYxcG03R2pYWkowU0p1LWlEeXdaT1MtalRoM0YxbG1wcC03N1hrOnFrZGc4Zw"
+    },
+    {
+      "t": 3436.95,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-44a5-a837-820a-4a84ba2c1fc4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3440.72,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-0c33-a536-8a54-23587e3dd0e4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3444.53,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-eefc-ae19-f208-8cb38121b114/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3444.78,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-7adc-a04e-604a-3a1d317dbeb4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3447.78,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-ed00-a921-de01-9a8d169e7044/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3451.78,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-ab84-acc9-22b2-e1f9106415a4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3452.22,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-507b-a84f-e37f-dd50f688fa34/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3639.38,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-837a-a7dd-7cf2-0a56c2eb6d54/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3640.53,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-180e-aa8f-556f-c1f93bf0e1b4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3644.83,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-c52f-ab3d-cb56-0dc8cc3bb734/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3650.61,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-570c-ad13-ca0c-3306d2134b24/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3652.17,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-bfa7-ad41-297f-85604f8372c4/362381996/run-details?sidebar=runs"
+    },
+    {
+      "t": 3655.19,
+      "url": "https://zapier.com/editor/362381996/run/019ef20a-1307-a3b4-ad05-28782f9061f4/362381996/run-details?sidebar=runs"
+    }
+  ],
+  "typed_texts": [
+    {
+      "t": 54.45,
+      "window": "Google Chrome",
+      "url": null,
+      "text": "Google Sheets"
+    },
+    {
+      "t": 73.42,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Salt and Stone Booking"
+    },
+    {
+      "t": 116.08,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "BookingID"
+    },
+    {
+      "t": 128.99,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "GuestName"
+    },
+    {
+      "t": 140.32,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "ExperianceType"
+    },
+    {
+      "t": 159.86,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "oat"
+    },
+    {
+      "t": 166.03,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Name"
+    },
+    {
+      "t": 171.81,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Guestcount"
+    },
+    {
+      "t": 193.36,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Start"
+    },
+    {
+      "t": 202.46,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Time"
+    },
+    {
+      "t": 241.98,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "st"
+    },
+    {
+      "t": 259.64,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Marcus Thorne"
+    },
+    {
+      "t": 274.94,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Private Fi"
+    },
+    {
+      "t": 281.7,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "shing Charter"
+    },
+    {
+      "t": 301.08,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Blue Marlin"
+    },
+    {
+      "t": 415.41,
+      "window": "Google Chrome",
+      "url": null,
+      "text": "Slack"
+    },
+    {
+      "t": 451.54,
+      "window": "Google Chrome",
+      "url": "https://app.slack.com/client/T0B0HV9QQBZ/C0B0UUMS1ST",
+      "text": "crewalerts"
+    },
+    {
+      "t": 479.78,
+      "window": "Google Chrome",
+      "url": null,
+      "text": "Zapier"
+    },
+    {
+      "t": 509.86,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor?attempt_id=2152cc78-0cdc-4102-8043-ac83dc110e02&conversationId=72f0db44-07ce-4199-afc8-f924ff2042c8",
+      "text": "Salt and St"
+    },
+    {
+      "t": 517.87,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor?attempt_id=2152cc78-0cdc-4102-8043-ac83dc110e02&conversationId=72f0db44-07ce-4199-afc8-f924ff2042c8",
+      "text": "one Zap"
+    },
+    {
+      "t": 530.2,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381996/setup",
+      "text": "Gooogle Sheeets"
+    },
+    {
+      "t": 553.85,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381996/setup",
+      "text": "New spreadsheet row"
+    },
+    {
+      "t": 630.15,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/setup",
+      "text": "Slaack"
+    },
+    {
+      "t": 644.44,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/setup",
+      "text": "Send Channel Message"
+    },
+    {
+      "t": 699.3,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "New Booking Alert"
+    },
+    {
+      "t": 717.23,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Name "
+    },
+    {
+      "t": 742.2,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Group Size "
+    },
+    {
+      "t": 773.05,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Experience"
+    },
+    {
+      "t": 783.06,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Type "
+    },
+    {
+      "t": 806.82,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Boat Assignment"
+    },
+    {
+      "t": 823.74,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Vessel "
+    },
+    {
+      "t": 847.5,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Schedule"
+    },
+    {
+      "t": 860.08,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Start Time "
+    },
+    {
+      "t": 885.9,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/draft/362381997/fields",
+      "text": "Please Prepare the boat and crew accordingly"
+    },
+    {
+      "t": 1010.21,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "Real Time Booking Alerts to Slack from Sheets"
+    },
+    {
+      "t": 1045.65,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "Automatically send new bokking details from Google Sheets to Slack ensuring you crew receives instant clear alerts"
+    },
+    {
+      "t": 1127.33,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "This Zap templet streamline booking communication for Salt and Stone Coastal Tours by automatically delivering real time alerts to the team via Slack The workflow is trriggered whenever"
+    },
+    {
+      "t": 1257.46,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "a new booking record is adde"
+    },
+    {
+      "t": 1278.12,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "d to a Google Sheets database which acts as the central source of truth for all reservations Once a new row is detected Zapier instantly captures "
+    },
+    {
+      "t": 1409.77,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "key booking details including Guest Name Experience Type Boat Ass"
+    },
+    {
+      "t": 1460.64,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "ignment and Scheduled Start Time"
+    },
+    {
+      "t": 1487.29,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "The automation then formats this data into a clean structured Slack message and it directly to a dedicated #crewalerts channel The message uses clear"
+    },
+    {
+      "t": 1577.44,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": " labling and bold formatting to ensure that critical infrmation is easy to read at glance even in fast paced dock envi"
+    },
+    {
+      "t": 1658.9,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "ronment"
+    },
+    {
+      "t": 1686.55,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "This eliminates the need for manual checking of emails or spreadsheets and reduces the ri"
+    },
+    {
+      "t": 1740.98,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "sk"
+    },
+    {
+      "t": 1743.17,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": " of missed or delayed booking updates"
+    },
+    {
+      "t": 1768.42,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": "Designed as a set and sorget"
+    },
+    {
+      "t": 1798.24,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": " system this Zap improves operation efficiency enhances team coordination and ensures that the crew is always"
+    },
+    {
+      "t": 1863.61,
+      "window": "Google Chrome",
+      "url": "https://zapier.com/editor/362381996/published",
+      "text": " prepared ahead of scheduled departures It is especially useful for small teams managing high value time sensitive bookings where immediate visibility is essential for smooth service delivery"
+    },
+    {
+      "t": 2067.98,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "sst"
+    },
+    {
+      "t": 2084.72,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Elena Rodriguez "
+    },
+    {
+      "t": 2116.65,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sunset Boat Rental"
+    },
+    {
+      "t": 2132.29,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sea Breeze"
+    },
+    {
+      "t": 2189.54,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2201.23,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Julian Vane"
+    },
+    {
+      "t": 2209.52,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Coastal Sightseeing"
+    },
+    {
+      "t": 2228.68,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Coastal Queen"
+    },
+    {
+      "t": 2272.47,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2287.66,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sarah Jenkins"
+    },
+    {
+      "t": 2306.39,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Whale "
+    },
+    {
+      "t": 2312.74,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Watching "
+    },
+    {
+      "t": 2325.56,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Ocean Voyager"
+    },
+    {
+      "t": 2383.37,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2395.82,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Rober"
+    },
+    {
+      "t": 2403.39,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "t Chen"
+    },
+    {
+      "t": 2414.13,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Deep Sea Angling"
+    },
+    {
+      "t": 2435.34,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Tide Runner"
+    },
+    {
+      "t": 2479.28,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2509.36,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Amara Okafor"
+    },
+    {
+      "t": 2521.78,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sun"
+    },
+    {
+      "t": 2525.67,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "set Boat Rental"
+    },
+    {
+      "t": 2536.39,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "The Salty Dog"
+    },
+    {
+      "t": 2582.06,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST7"
+    },
+    {
+      "t": 2592.8,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Lucas Miller"
+    },
+    {
+      "t": 2604.11,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Island Picnic Shuttle"
+    },
+    {
+      "t": 2627.36,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Harbor Light"
+    },
+    {
+      "t": 2667.1,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2678.26,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sophie Dunpont"
+    },
+    {
+      "t": 2695.06,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "EcoTour"
+    },
+    {
+      "t": 2704.39,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": " & Bri"
+    },
+    {
+      "t": 2713.6,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "irding"
+    },
+    {
+      "t": 2721.79,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Pelicans"
+    },
+    {
+      "t": 2734.86,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": " Rest"
+    },
+    {
+      "t": 2788.67,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 2796.72,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Liam OCnnor"
+    },
+    {
+      "t": 2811.37,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Private Fishing Charter"
+    },
+    {
+      "t": 2830.06,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Blue Marlin"
+    },
+    {
+      "t": 2923.53,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Isabella Rossi"
+    },
+    {
+      "t": 2936.98,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Harbor Light"
+    },
+    {
+      "t": 2946.19,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": " Cruise"
+    },
+    {
+      "t": 2956.46,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Mistral"
+    },
+    {
+      "t": 2992.29,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 3002.47,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "David Kim"
+    },
+    {
+      "t": 3011.3,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Coastal Sightseeing"
+    },
+    {
+      "t": 3028.59,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Coastal Queen"
+    },
+    {
+      "t": 3064.19,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 3072.5,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Chloe Bennett"
+    },
+    {
+      "t": 3086.57,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Sunset Boat Rental"
+    },
+    {
+      "t": 3100.81,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "ea Breeze"
+    },
+    {
+      "t": 3146.4,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 3156.06,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Nathaniel West"
+    },
+    {
+      "t": 3171.36,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Whale Watching"
+    },
+    {
+      "t": 3183.86,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Ocean Voyager"
+    },
+    {
+      "t": 3221.1,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 3234.53,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Olivia"
+    },
+    {
+      "t": 3242.2,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": " Vance"
+    },
+    {
+      "t": 3250.16,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "coTour & Birding"
+    },
+    {
+      "t": 3278.2,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Coral Wanderer"
+    },
+    {
+      "t": 3320.36,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "SST"
+    },
+    {
+      "t": 3333.02,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Jackson Reed"
+    },
+    {
+      "t": 3342.99,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Deep Sea Angling"
+    },
+    {
+      "t": 3357.2,
+      "window": "Google Chrome",
+      "url": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+      "text": "Tide Runner"
+    }
+  ],
+  "action_digest": "\n=== postwork ===\n  00:17  click at (1756,11)\n\n=== Windows Explorer ===\n  00:17  double-click at (24,664)\n\n=== WPS Office ===\n  00:23  click at (127,289)\n  00:24  double-click at (124,306)\n  00:26  double-click at (231,307)\n  00:27  triple-click at (231,307)\n  00:27  double-click at (364,314)\n  00:30  double-click at (551,316)\n  00:34  double-click at (692,309)\n  00:36  triple-click at (692,309)\n  00:37  double-click at (800,299)\n  00:40  click at (1141,469)\n  00:40  drag (83,324)->(720,331)\n  00:43  key Control+B\n  00:51  click at (1787,28)\n\n=== Windows Explorer ===\n  00:52  click at (1195,1066)\n\n=== Google Chrome ===\n  00:54  click at (440,79)\n  00:54  type \"Google Sheets\"\n  01:00  key Enter\n  01:06  click at (410,384)   [https://google.com/search]\n  01:13  click at (283,133)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  01:13  type \"Salt and Stone Booking\"\n  01:38  click at (760,706)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  01:39  click at (148,337)\n  01:48  click at (1253,1057)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n\n=== WPS Office ===\n  01:53  click at (1180,1055)\n\n=== Google Chrome ===  [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  01:55  click at (152,337)\n  01:56  type \"BookingID\"\n  02:08  click at (244,331)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  02:08  type \"GuestName\"\n  02:19  click at (368,336)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  02:20  type \"ExperianceType\"\n  02:34  click at (544,413)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  02:35  click at (512,333)\n  02:36  key Shift+B\n  02:39  type \"oat\"\n  02:46  type \"Name\"\n  02:51  type \"Guestcount\"\n  03:06  click at (710,331)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  03:07  click at (665,332)\n  03:07  double-click at (629,327)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  03:09  click at (629,327)\n  03:09  key Backspace\n  03:10  key Shift+C\n  03:12  click at (760,335)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  03:13  type \"Start\"\n  03:22  type \"Time\"\n  03:26  drag (598,318)->(614,315)\n  03:27  drag (127,335)->(756,327)\n  03:30  click at (756,327)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  03:33  click at (846,571)\n  03:37  click at (1861,238)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  03:39  drag (346,296)->(366,297)\n  03:46  drag (544,298)->(590,309)\n  03:49  drag (737,294)->(769,333)\n  03:53  drag (1055,310)->(1067,306)\n  03:55  drag (1067,306)->(1108,338)\n  03:57  drag (1108,298)->(1118,297)\n  04:01  click at (151,407)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  04:01  type \"st\"\n  04:19  click at (311,417)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  04:19  type \"Marcus Thorne\"\n  04:30  double-click at (573,418)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  04:34  type \"Private Fi\"\n  04:41  type \"shing Charter\"\n  04:59  click at (665,401)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  05:01  type \"Blue Marlin\"\n  05:15  click at (889,407)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  05:17  key Numpad4\n  05:21  key ArrowRight\n  05:23  key Numpad2\n  05:24  key Numpad0\n  05:24  key Numpad2\n\n  ... (775 lines omitted) ...\n\n  58:22  click at (231,0)\n  58:24  click at (24,539)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  58:28  click at (644,27)\n      ... scrolled x1\n  58:29  double-click at (673,629)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  58:31  double-click at (156,4)\n  58:33  drag (210,569)->(246,573)\n  58:36  click at (312,568)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  58:38  click at (16,558)\n  58:39  click at (657,0)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n      ... scrolled x1\n  58:41  double-click at (737,435)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  58:43  click at (236,9)\n  58:45  click at (30,597)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  58:47  click at (733,3)\n      ... scrolled x1\n  58:52  click at (670,426)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  58:52  double-click at (670,426)\n  58:53  double-click at (88,13)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  58:58  click at (23,650)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:05  click at (719,4)\n      ... scrolled x3\n  59:08  click at (744,634)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:12  click at (246,26)\n  59:17  click at (28,686)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:18  click at (720,0)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:20  click at (776,583)\n  59:21  click at (85,0)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:22  click at (32,725)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:23  click at (626,0)\n  59:25  click at (828,539)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:29  click at (209,33)\n  59:33  click at (33,765)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:35  click at (772,28)\n      ... scrolled x2\n  59:40  click at (730,479)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:47  click at (135,0)\n  59:49  click at (30,794)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:50  click at (652,0)\n  59:51  click at (876,791)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:52  click at (789,665)\n  59:53  click at (785,519)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  59:54  click at (82,5)\n  59:56  click at (23,846)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:57  click at (26,837)\n  59:58  click at (651,0)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  59:59  click at (763,572)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:00  click at (123,0)\n  60:02  click at (16,732)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  60:03  click at (688,0)\n  60:05  click at (727,592)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:06  click at (179,0)\n  60:08  click at (30,771)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  60:09  click at (658,0)\n  60:11  click at (708,638)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:11  click at (708,638)\n  60:12  click at (228,12)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:15  click at (23,818)   [https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit]\n  60:16  click at (646,2)\n  60:17  click at (637,646)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:19  click at (694,677)\n  60:22  click at (1223,0)   [https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG]\n  60:23  click at (1057,0)   [https://zapier.com/editor/362381996/run/019ef20a-507b-a84f-e37f-dd50f688fa34/362381996/run-details]\n  60:24  click at (964,417)   [https://zapier.com/editor/362381996/published/362381997/fields]\n  60:26  click at (978,423)\n  60:29  click at (1168,0)   [https://zapier.com/editor/362381996/published/362381997/fields]\n  60:30  click at (467,570)   [https://zapier.com/editor/362381996/run/019ef20a-507b-a84f-e37f-dd50f688fa34/362381996/run-details]\n  60:34  click at (209,775)\n  60:35  click at (196,729)   [https://zapier.com/editor/362381996/run/019ef20a-44a5-a837-820a-4a84ba2c1fc4/362381996/run-details]\n  60:36  click at (194,665)   [https://zapier.com/editor/362381996/run/019ef20a-0c33-a536-8a54-23587e3dd0e4/362381996/run-details]\n  60:39  click at (194,665)   [https://zapier.com/editor/362381996/run/019ef20a-837a-a7dd-7cf2-0a56c2eb6d54/362381996/run-details]\n  60:40  click at (194,665)   [https://zapier.com/editor/362381996/run/019ef20a-180e-aa8f-556f-c1f93bf0e1b4/362381996/run-details]\n  60:41  click at (176,626)\n  60:44  click at (205,648)   [https://zapier.com/editor/362381996/run/019ef20a-c52f-ab3d-cb56-0dc8cc3bb734/362381996/run-details]\n  60:46  click at (203,655)   [https://zapier.com/editor/362381996/run/019ef20a-eefc-ae19-f208-8cb38121b114/362381996/run-details]\n  60:49  click at (195,743)   [https://zapier.com/editor/362381996/run/019ef20a-7adc-a04e-604a-3a1d317dbeb4/362381996/run-details]\n  60:50  click at (205,692)   [https://zapier.com/editor/362381996/run/019ef20a-570c-ad13-ca0c-3306d2134b24/362381996/run-details]\n  60:52  click at (206,637)   [https://zapier.com/editor/362381996/run/019ef20a-bfa7-ad41-297f-85604f8372c4/362381996/run-details]\n  60:55  click at (195,765)   [https://zapier.com/editor/362381996/run/019ef20a-1307-a3b4-ad05-28782f9061f4/362381996/run-details]\n  60:56  click at (197,710)   [https://zapier.com/editor/362381996/run/019ef20a-ed00-a921-de01-9a8d169e7044/362381996/run-details]",
+  "app_segments": [
+    {
+      "window": "postwork",
+      "start": 17.45,
+      "end": 17.45,
+      "duration": 0.0,
+      "n_actions": 1,
+      "urls": []
+    },
+    {
+      "window": "Windows Explorer",
+      "start": 17.95,
+      "end": 17.95,
+      "duration": 0.0,
+      "n_actions": 1,
+      "urls": []
+    },
+    {
+      "window": "WPS Office",
+      "start": 23.86,
+      "end": 51.23,
+      "duration": 27.38,
+      "n_actions": 14,
+      "urls": []
+    },
+    {
+      "window": "Windows Explorer",
+      "start": 52.66,
+      "end": 52.66,
+      "duration": 0.0,
+      "n_actions": 1,
+      "urls": []
+    },
+    {
+      "window": "Google Chrome",
+      "start": 54.03,
+      "end": 108.17,
+      "duration": 54.14,
+      "n_actions": 15,
+      "urls": [
+        "https://google.com/search?q=google+sheets&oq=Google+Sheets&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIGCAYQRRg8MgYIBxBFGDzSAQg4ODI2ajBqN6gCCLACAfEFBeTuwEJ0neE&sourceid=chrome&ie=UTF-8",
+        "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0"
+      ]
+    },
+    {
+      "window": "WPS Office",
+      "start": 113.98,
+      "end": 113.98,
+      "duration": 0.0,
+      "n_actions": 1,
+      "urls": []
+    },
+    {
+      "window": "Google Chrome",
+      "start": 115.53,
+      "end": 3656.5,
+      "duration": 3540.97,
+      "n_actions": 1164,
+      "urls": [
+        "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit?gid=0#gid=0",
+        "https://google.com/search?q=slack&oq=Slack&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBggDEEUYPDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMjQ0M2owajeoAgCwAgA&sourceid=chrome&ie=UTF-8",
+        "https://slack.com",
+        "https://main-dyd9530.slack.com/ssb/redirect?_gl=1*6xhtf2*_gcl_au*MTU3NDUzNDA3NC4xNzc3NTc3NTQ4",
+        "https://app.slack.com/client/T0B0HV9QQBZ/C0B0UUMS1ST",
+        "https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG",
+        "https://google.com/search?q=zapier&oq=Zapier&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyEggBEC4YQxjHARjRAxiABBiKBTIGCAIQRRg8MgYIAxBFGDwyBggEEEUYPDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwMTVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
+        "https://zapier.com/l/home?utm_source=google&utm_medium=cpc&utm_campaign=gaw-gbl-nua-search-brand-remarketing&utm_term=zapier&utm_content=1005570&utm_ads_campaign_id=17613359682&utm_ads_adset_id=136156400777&utm_ads_ad_id=747677518063&gad_source=1&gad_campaignid=17613359682&gbraid=0AAAAAC6ACE4IUmsCmD8jXJnfaCIeCYWuf&gclid=CjwKCAjw5NvPBhAoEiwA_2egfsaYHzeenrOxv_cG2rP9-M3DnIf4LCLFkgSDO2Hyk8j5wg9HaP2H7RoCzKcQAvD_BwE",
+        "https://zapier.com/app/home?conversationId=beee5314-89fd-41da-92af-b7c8c08be338",
+        "https://zapier.com/editor?attempt_id=2152cc78-0cdc-4102-8043-ac83dc110e02&conversationId=72f0db44-07ce-4199-afc8-f924ff2042c8",
+        "https://zapier.com/editor/362381996/draft",
+        "https://zapier.com/editor/362381996/draft/362381996/setup",
+        "https://zapier.com/engine/auth/start/GoogleSheetsV2CLIAPI@2.12.0/?_zapier_account_id=27193866",
+        "https://accounts.google.com/v3/signin/accountchooser?access_type=offline&client_id=927538837578.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fzapier.com%2Fdashboard%2Fauth%2Foauth%2Freturn%2FGoogleSheetsV2CLIAPI%2F&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fspreadsheets+email&state=_wG4gtTeH0TZ4QSxum-Gbmef8JoPD_y6PeigPWidzz4&dsh=S-1138801208%3A1777806717567298&o2v=2&service=lso&flowName=GeneralOAuthFlow&opparams=%253F&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANCek1Uc3uMuM5r1w_KbvGJm7kZP135JrtmFqH0h9zw7_6l9lr0iR7n7wk8LgXIQhz2iaXFKVPD_ge9iCP9zzYe74Pw7msRIiqAzS5Id5XZm5NZWGoRSs_nGeLd35e13qU1sW-ICzgA4W8IjKLuMBTorcrwwcJvZxaNjtE6ewM1fOUGEJ_JXXsNtkLSCA_rnnl7M-Wl3-2qPeS2vbOwqxhE-doWhKTZgIKTUQt06Ukpb8vL3csmSX6v0d2uFoIFsQmLZtIi_yT9hdI4-YzcrCIsVxXp8Am4fIFV6DRD7cCDOnPBA92_RUoiP4LVmnLO48qCsHCs8dOudKGWK70COBNWN5fzvnNiGLHNvu4a8nWMQ0wWvZrAvc50fsAQ-0_ZE4xqBu7PnraZHIoU4PLinwqe8usJ526_xTgNjuVh9hiRsr70eJU%26flowName%3DGeneralOAuthFlow%26as%3DS-1138801208%253A1777806717567298%26client_id%3D927538837578.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=https%3A%2F%2Fzapier.com",
+        "https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAOTaM9afKB1OV36sMb64UzxY-8NrKDXqja9Eo5V6cLBIIfiDFiXuVa6OpkOD4rlEPFqZ_0U_7v0dN3whajdVKHByFJLonPmPJUri30GRd-NYNgJlqKep3NBubYaHMVt4oIFq4Vb3g2PUYsOoi7Yx5oKmjiVEzwSCvateGS8lIkeOurQ0qgeaUzgePYkv1Cq6oRbZEkkq_i2RmTSer5P5aDbFo23TW_g3hNaAOcC10pKIriocpmwqIA-ceIwoQnThQLNdpEw8sM6ghBzGYg4c2SfxkAWzouPpJn1ZrOP2yNdwzqccSq88QfukQVZrEdTo0-QfKHJiny_wAkTNj_DTUYBWcV1MFreYmJuHfDYTuZ_g_zybR6xAe_q_Xm1JlNfVHuyKyP0EZr1ihsoALAExN5-jLWy6k8E4EBxDTicJp9HdjM7oYgcI8FgVOHb_Q509BErW90HBPmA2QRH8zx8a4WH3rlLvOPzVRBifGOeIlwub4vORzi-Z7qkPOithiyEs7-tWPmN0MQI8AVBooMNxP35FJmf_HAo2-CW_l26YVooa6HtCrh4-L1iOeKAULL8PXBIfzZLlBxSmTw1jFqUkd5RnRh85QxxTlD6elX2eGNihaXjVgvPjeQ8KHAAIFgU4f4xxVZpuoLD20jVtTRMyPa7aTYCgtAzvhi7JstP_1hfKiY4IN8gtMz7SCeb8cJ_lWUg5V6knP_8uwMMUahCcOCJ4NeBVHsNiSs19UU9lU5Aw92uD3oUdNwLhiGNi9z9zOlucMZn8yhHbAswpBofhfhr7AmTor5ExHy1iw7PC3ZE0zVqnAgIKiOOn1ofnJb5ftFsKEwV_IfFBXyN1ZBCSuvYLJKA5nyeGTHQdMnfQpNIUJFzmd_J_lfRE77ZveUU-2ovtsVmKiMPXPolPY9H2HUobDPEiwO_Cf61Dx6V3sUPs6yKrTOwIOw__IYuIeSXnK-99bcAo1X8CM2jmxSDi7d_SCRmmQ&flowName=GeneralOAuthFlow&as=S-1138801208%3A1777806717567298&client_id=927538837578.apps.googleusercontent.com&rapt=AEjHL4Ml68PWl8Q-uj_DqtDXPAhyhH4N_sS1AI7wnnBy9unqsrI9qNndwoDO7fj89H7WIT4OeBwUeuEhYmgN2XFLegZnGsoCSzRS1OHU3d0sivQmVdSmQfM#",
+        "https://accounts.google.com/signin/oauth/v2/consentsummary?as=S-1138801208%3A1777806717567298&authuser=0&client_id=927538837578.apps.googleusercontent.com&flowName=GeneralOAuthFlow&part=AJi8hAMQte5rRSVfHXwAYjPPtl7I5jo5s-Kkn9I-1Wno3IMisqZ6p-vaEKOvcZElmEsjOv47Z-w8LrXUNLg5nOr_Jwxsfm3qnay0EN03B5gyaYpl4oLYzlTjFe4sw3OjVvvtL_pmPz3UvLrJFz9OjkfZP7kjv244RVS1Eyza-ILbdGp19kg2WVx2MFLIMFXhwW6JKnQycXXByxG9bP6tg7fdD0z2zzdrIyBv2nH_VeAK21Pg5tL3jj3Fceuk0mcLpwZsYKwniu2dTAu4NRH_8bURTTIF_ZrVBwORd7nrN6THFRa2pTA9SbG0zRZ21DajEu5DkppnoKFUdMmxFpc8B-I4Ey-ip8-7G57lGwxKYBDxCFt-Cw-RCdjRqnxKqjfJaNOLrWpF3e7eqI9SxUl1PGF0IPYerNF6HqSPX8QTdHLOFtnSFfCwUpje-Tm8Lk2wk2qEr-BjXhLWZvzqreblXVcmw9AjIMIBJXFcjOSoOVHT42iZz3W0TOCsWv8Gknz3X8UTEiL0KNSOE7aKSvqgsa6xfpXty4EXm0Qb8HuEiOcWAqg2FX5FZaWnS2IcTZRsiTTV5hS9frQ0Inf0FIBTMaH3qo7v0qup1KS-U0jm7pOrKwYraQcSL8JySfS-9tLCZdW2S6qHh5iNorWVtgedwTyr9P3hEBUB6TnQgYbjravK-V9LA-v9oBuq0c2v-iPsLHFyfhkcKn2jDzbWygRi_ImelHx78o4-NHnjJA_h4nNHLQZrz41x-Ol57N11fINrTG-FX_-b8lc00524_EPeX6JY9iKrCdlPjPImzHMreETFtwcNbwO29mTIDs2-Qbb4eSikSWMC3FLWUxSaIGu6iMop9-ZzbunmLpvW3ye109jU64kgeqsG0WaCVqch3uuOKusYpJZPJBA6gi7JQKK-uhyhV3KHL-NpZE8hfT85bTNWPo58-bHLFhtuhLrw2D8kB1GW3AZd1SsEdiZd0R1F1DN5wvoyBJMAXw&rapt=AEjHL4Ml68PWl8Q-uj_DqtDXPAhyhH4N_sS1AI7wnnBy9unqsrI9qNndwoDO7fj89H7WIT4OeBwUeuEhYmgN2XFLegZnGsoCSzRS1OHU3d0sivQmVdSmQfM&xsrf=ACyENv9OHIkLg0RvsNM5lQhSVt49%3A1777806723077",
+        "https://zapier.com/editor/362381996/draft/362381996/fields",
+        "https://zapier.com/editor/362381996/draft/362381996/sample",
+        "https://zapier.com/editor/362381996/draft/362381997/setup",
+        "https://zapier.com/engine/auth/start/SlackCLIAPI@1.38.0/?_zapier_account_id=27193866",
+        "https://main-dyd9530.slack.com/oauth?client_id=2165348927.2161329837&scope=canvases%3Aread%2Ccanvases%3Awrite%2Cchannels%3Ahistory%2Cchannels%3Ajoin%2Cchannels%3Amanage%2Cchannels%3Aread%2Cchat%3Awrite%2Cchat%3Awrite.customize%2Cchat%3Awrite.public%2Ccommands%2Cemoji%3Aread%2Cfiles%3Aread%2Cfiles%3Awrite%2Cgroups%3Ahistory%2Cgroups%3Aread%2Cgroups%3Awrite%2Cim%3Aread%2Cim%3Awrite%2Cmpim%3Aread%2Cmpim%3Awrite%2Creactions%3Aread%2Cteam%3Aread%2Cusers.profile%3Aread%2Cusers%3Aread%2Cusers%3Aread.email&user_scope=canvases%3Aread%2Ccanvases%3Awrite%2Cchannels%3Ahistory%2Cchannels%3Aread%2Cchannels%3Awrite%2Cchat%3Awrite%2Cemoji%3Aread%2Cfiles%3Aread%2Cfiles%3Awrite%2Cgroups%3Ahistory%2Cgroups%3Aread%2Cgroups%3Awrite%2Cim%3Aread%2Cim%3Awrite%2Cmpim%3Aread%2Cmpim%3Awrite%2Creactions%3Aread%2Creactions%3Awrite%2Creminders%3Aread%2Creminders%3Awrite%2Csearch%3Aread%2Cstars%3Aread%2Cteam%3Aread%2Cusers.profile%3Awrite%2Cusers%3Aread%2Cusers%3Aread.email&redirect_uri=https%3A%2F%2Fzapier.com%2Fdashboard%2Fauth%2Foauth%2Freturn%2FSlackCLIAPI%2F&state=sHLUIayXJ7bQVY06Si5G3KldN0J2HWu-Zh20qtgCgh0&granular_bot_scope=1&single_channel=0&install_redirect=&tracked=1&user_default=0&response_type=code&team=",
+        "https://zapier.com/editor/362381996/draft/362381997/fields",
+        "https://zapier.com/editor/362381996/draft/362381997/sample",
+        "https://zapier.com/editor/362381996/published/362381997/sample",
+        "https://zapier.com/editor/362381996/published/362381996/fields",
+        "https://zapier.com/editor/362381996/published/362381997/fields",
+        "https://zapier.com/editor/362381996/published",
+        "https://zapier.com/templates/details/real-time-booking-alerts-to-slack-from-sheets-6afe67?secret=MTp0ZW1wbGF0ZTpIRzVteVYxcG03R2pYWkowU0p1LWlEeXdaT1MtalRoM0YxbG1wcC03N1hrOnFrZGc4Zw",
+        "https://zapier.com/editor/362381996/run/019ef20a-44a5-a837-820a-4a84ba2c1fc4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-0c33-a536-8a54-23587e3dd0e4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-eefc-ae19-f208-8cb38121b114/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-7adc-a04e-604a-3a1d317dbeb4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-ed00-a921-de01-9a8d169e7044/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-ab84-acc9-22b2-e1f9106415a4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-507b-a84f-e37f-dd50f688fa34/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-837a-a7dd-7cf2-0a56c2eb6d54/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-180e-aa8f-556f-c1f93bf0e1b4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-c52f-ab3d-cb56-0dc8cc3bb734/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-570c-ad13-ca0c-3306d2134b24/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-bfa7-ad41-297f-85604f8372c4/362381996/run-details?sidebar=runs",
+        "https://zapier.com/editor/362381996/run/019ef20a-1307-a3b4-ad05-28782f9061f4/362381996/run-details?sidebar=runs"
+      ]
+    }
+  ],
+  "keyframes": [
+    {
+      "offset": 0.0,
+      "label": "postwork",
+      "note": "",
+      "source": "video",
+      "url": null,
+      "path": "outputs/keyframes/kf_00_0s.jpg"
+    },
+    {
+      "offset": 17.45,
+      "label": "postwork",
+      "note": "click at (1756,11)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/10c74dfc-b71c-42bd-8b12-400c86ec029d_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_01_17s.jpg"
+    },
+    {
+      "offset": 17.95,
+      "label": "Windows Explorer",
+      "note": "double-click at (24,664)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/77eee0c1-d8fe-4249-87d2-be739732b414_before_v2.jpg",
+      "path": "outputs/keyframes/kf_02_17s.jpg"
+    },
+    {
+      "offset": 23.86,
+      "label": "WPS Office",
+      "note": "click at (127,289)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/be13c800-1154-4e62-9dae-e1efca4ac8aa_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_03_23s.jpg"
+    },
+    {
+      "offset": 52.66,
+      "label": "Windows Explorer",
+      "note": "click at (1195,1066)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/44497df9-e918-48c0-8ffb-a0da7504f3e8_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_04_52s.jpg"
+    },
+    {
+      "offset": 54.03,
+      "label": "Google Chrome",
+      "note": "click at (440,79)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/42b343f7-d7dc-4a7c-930a-11ba40b6c824_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_05_54s.jpg"
+    },
+    {
+      "offset": 113.98,
+      "label": "WPS Office",
+      "note": "click at (1180,1055)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/0620ab2e-4c3b-4a63-8676-6e98b6330667_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_06_113s.jpg"
+    },
+    {
+      "offset": 115.53,
+      "label": "Google Chrome (docs.google.com)",
+      "note": "click at (152,337)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/bcd1bc02-6006-4a21-b9d3-74a70738e4e1_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_07_115s.jpg"
+    },
+    {
+      "offset": 913.89,
+      "label": "Google Chrome (zapier.com)",
+      "note": "click at (1535,668)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/ebbc83e4-7698-4821-a943-03226d06ca7c_after_v2.jpg",
+      "path": "outputs/keyframes/kf_08_913s.jpg"
+    },
+    {
+      "offset": 1828.25,
+      "label": "Google Chrome (zapier.com)",
+      "note": "",
+      "source": "video",
+      "url": null,
+      "path": "outputs/keyframes/kf_09_1828s.jpg"
+    },
+    {
+      "offset": 2742.24,
+      "label": "Google Chrome (docs.google.com)",
+      "note": "click at (835,681)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/f583e3ae-a19e-4750-ac07-9a5515069572_before_v2.jpg",
+      "path": "outputs/keyframes/kf_10_2742s.jpg"
+    },
+    {
+      "offset": 3656.5,
+      "label": "Google Chrome (zapier.com)",
+      "note": "click at (197,710)",
+      "source": "remote",
+      "url": "https://postworkbatch2.blob.core.windows.net/006897b3-9b62-4c88-a0ef-0df904d9d46d/screenshots/db81439c-bb84-4166-a7cb-c44da16564c8_at_start_v2.jpg",
+      "path": "outputs/keyframes/kf_11_3656s.jpg"
+    }
+  ]
+}

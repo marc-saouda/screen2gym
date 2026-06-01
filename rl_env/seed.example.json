@@ -1,0 +1,51 @@
+{
+  "task": {
+    "summary": "Set up and validate a Zapier automation that posts a formatted real-time booking alert to a Slack channel (#crew-alerts) whenever a new row is added to the 'Salt and Stone Booking' Google Sheet.",
+    "goal": "Configure the Zapier-style automation (Google Sheets New Row trigger -> Slack Send Channel Message action) so that adding a new booking row posts a correctly formatted 'New Booking Alert' to #crew-alerts, then validate it by adding a new row.",
+    "success_criteria": [
+      "The automation is enabled with a Google Sheets 'new row' trigger and a Slack 'send channel message' action.",
+      "The action targets the #crew-alerts channel.",
+      "A new booking row is added to the salt_stone_bookings_starter dataset (beyond the 15 seeded rows).",
+      "A 'New Booking Alert' message appears in #crew-alerts that includes the new booking's Guest Name, Group Size, Experience Type, Boat Assignment, and Scheduled Start Time, plus a 'prepare the boat and crew' instruction."
+    ],
+    "applications": ["spreadsheet", "slack", "zapier"]
+  },
+  "initial_state": {
+    "business_context": "Salt & Stone Coastal Tours is a boutique operator offering private fishing charters and sunset tours. The founder is missing urgent booking details because notifications are buried in a busy email inbox, leading to delays in boat preparation. They need a Zapier automation to funnel new booking data directly into a Slack channel for the dock crew.",
+    "starting_application": "spreadsheet",
+    "datasets": [
+      {
+        "name": "salt_stone_bookings_starter",
+        "sheet_title": "Salt and Stone Booking",
+        "columns": ["Booking_ID", "Guest_Name", "Experience_Type", "Boat_Name", "Guest_Count", "Start_Time"],
+        "rows": [
+          ["SST-00001", "Marcus Thorne", "Private Fishing Charter", "Blue Marlin", "4", "2024-07-10T06:00:00"],
+          ["SST-00002", "Elena Rodriguez", "Sunset Boat Rental", "Sea Breeze", "2", "2024-07-10T18:30:00"],
+          ["SST-00003", "Julian Vane", "Coastal Sightseeing", "Coastal Queen", "8", "2024-07-11T10:00:00"],
+          ["SST-00004", "Sarah Jenkins", "Whale Watching", "Ocean Voyager", "12", "2024-07-11T09:00:00"],
+          ["SST-00005", "Robert Chen", "Deep Sea Angling", "Tide Runner", "3", "2024-07-12T05:30:00"],
+          ["SST-00006", "Amara Okafor", "Sunset Boat Rental", "The Salty Dog", "6", "2024-07-12T19:00:00"],
+          ["SST-00007", "Lucas Miller", "Island Picnic Shuttle", "Harbor Light", "5", "2024-07-13T11:30:00"],
+          ["SST-00008", "Sophie Dupont", "Eco-Tour & Birding", "Pelican's Rest", "4", "2024-07-13T08:00:00"],
+          ["SST-00009", "Liam O'Connor", "Private Fishing Charter", "Blue Marlin", "2", "2024-07-14T06:30:00"],
+          ["SST-00010", "Isabella Rossi", "Harbor Lights Cruise", "Mistral", "10", "2024-07-14T20:00:00"],
+          ["SST-00011", "David Kim", "Coastal Sightseeing", "Coastal Queen", "7", "2024-07-15T14:00:00"],
+          ["SST-00012", "Chloe Bennett", "Sunset Boat Rental", "Sea Breeze", "2", "2024-07-15T18:45:00"],
+          ["SST-00013", "Nathaniel West", "Whale Watching", "Ocean Voyager", "10", "2024-07-16T09:30:00"],
+          ["SST-00014", "Olivia Vance", "Eco-Tour & Birding", "Coral Wanderer", "6", "2024-07-16T10:00:00"],
+          ["SST-00015", "Jackson Reed", "Deep Sea Angling", "Tide Runner", "4", "2024-07-17T05:00:00"]
+        ]
+      }
+    ],
+    "accounts": ["google_sheets", "slack", "zapier"],
+    "target_slack_channel": "#crew-alerts",
+    "slack_channels": ["#general", "#crew-alerts"],
+    "automation_spec": {
+      "trigger": "Google Sheets - New Spreadsheet Row (sheet: 'Salt and Stone Booking')",
+      "action": "Slack - Send Channel Message (channel: #crew-alerts, sent as bot 'Zapier')",
+      "bot_name": "Zapier",
+      "message_title": "New Booking Alert",
+      "message_template": ":rotating_light: *New Booking Alert*\n*Guest Name:* {Guest_Name}\n*Group Size:* {Guest_Count}\n*Experience Type:* {Experience_Type}\n*Boat Assignment:* {Boat_Name}\n*Scheduled Start Time:* {Start_Time}\nPlease prepare the boat and crew accordingly."
+    }
+  }
+}

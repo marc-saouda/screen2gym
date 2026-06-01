@@ -1,0 +1,209 @@
+{
+  "task": {
+    "title": "Automate Booking Alerts from Google Sheets to Slack",
+    "summary": "The user set up an automation to send real-time booking alerts from a Google Sheets document to a Slack channel. This involved configuring a Zap in Zapier to trigger when a new row is added to the Google Sheet, and then sending a formatted message to a Slack channel.",
+    "goal": "Create a Zapier automation that sends new booking details from Google Sheets to a Slack channel.",
+    "domain": "business-automation",
+    "applications": [
+      "Google Chrome",
+      "Google Sheets",
+      "Zapier",
+      "Slack"
+    ],
+    "steps": [
+      "Open Google Sheets and create a new spreadsheet for bookings.",
+      "Set up a Zap in Zapier to trigger on new spreadsheet rows.",
+      "Configure the Zap to send a message to a Slack channel with booking details.",
+      "Test the Zap to ensure it sends messages correctly."
+    ],
+    "success_criteria": [
+      "A new row in Google Sheets triggers a Slack message.",
+      "The Slack message contains correct booking details.",
+      "The Zap runs successfully without errors."
+    ]
+  },
+  "initial_state": {
+    "narrative": "The user starts with a desktop environment with access to Google Chrome, WPS Office, and a pre-existing spreadsheet file. The Google account is logged in, and the Zapier and Slack accounts are accessible.",
+    "starting_screen": "Desktop with shortcuts to Google Chrome and WPS Office.",
+    "environment": {
+      "os": "Windows",
+      "applications_available": [
+        "Google Chrome",
+        "WPS Office",
+        "Slack",
+        "Zapier"
+      ],
+      "accounts_and_auth": [
+        "Google account logged in",
+        "Zapier account accessible",
+        "Slack account accessible"
+      ]
+    },
+    "resources": [
+      {
+        "name": "Salt and Stone Booking Spreadsheet",
+        "type": "spreadsheet",
+        "location": "https://docs.google.com/spreadsheets/d/1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg/edit",
+        "state": "to_be_created",
+        "details": "A new Google Sheet for booking data."
+      },
+      {
+        "name": "Zapier Automation",
+        "type": "webapp",
+        "location": "https://zapier.com/editor/362381996/draft",
+        "state": "to_be_created",
+        "details": "Zap to automate sending booking alerts to Slack."
+      },
+      {
+        "name": "Slack Channel",
+        "type": "slack_channel",
+        "location": "https://app.slack.com/client/T0B0HV9QQBZ/C0B1FH2S0SG",
+        "state": "present",
+        "details": "Channel for crew alerts."
+      }
+    ],
+    "seed_data": {
+      "name": "Booking Data",
+      "source": "WPS Office spreadsheet",
+      "schema": [
+        "Booking_ID",
+        "Guest_Name",
+        "Experience_Type",
+        "Boat_Name",
+        "Guest_Count",
+        "Start_Time"
+      ],
+      "rows": [
+        {
+          "Booking_ID": "SST-00001",
+          "Guest_Name": "Marcus Thorne",
+          "Experience_Type": "Private Fishing Charter",
+          "Boat_Name": "Blue Marlin",
+          "Guest_Count": "4",
+          "Start_Time": "2024-07-10T06:00:00"
+        },
+        {
+          "Booking_ID": "SST-00002",
+          "Guest_Name": "Elena Rodriguez",
+          "Experience_Type": "Sunset Boat Rental",
+          "Boat_Name": "Sea Breeze",
+          "Guest_Count": "2",
+          "Start_Time": "2024-07-10T18:30:00"
+        },
+        {
+          "Booking_ID": "SST-00003",
+          "Guest_Name": "Julian Vane",
+          "Experience_Type": "Coastal Sightseeing",
+          "Boat_Name": "Coastal Queen",
+          "Guest_Count": "8",
+          "Start_Time": "2024-07-11T10:00:00"
+        },
+        {
+          "Booking_ID": "SST-00004",
+          "Guest_Name": "Sarah Jenkins",
+          "Experience_Type": "Whale Watching",
+          "Boat_Name": "Ocean Voyager",
+          "Guest_Count": "12",
+          "Start_Time": "2024-07-11T09:00:00"
+        },
+        {
+          "Booking_ID": "SST-00005",
+          "Guest_Name": "Robert Chen",
+          "Experience_Type": "Deep Sea Angling",
+          "Boat_Name": "Tide Runner",
+          "Guest_Count": "3",
+          "Start_Time": "2024-07-12T05:30:00"
+        },
+        {
+          "Booking_ID": "SST-00006",
+          "Guest_Name": "Amara Okafor",
+          "Experience_Type": "Sunset Boat Rental",
+          "Boat_Name": "The Salty Dog",
+          "Guest_Count": "6",
+          "Start_Time": "2024-07-12T19:00:00"
+        },
+        {
+          "Booking_ID": "SST-00007",
+          "Guest_Name": "Lucas Miller",
+          "Experience_Type": "Island Picnic Shuttle",
+          "Boat_Name": "Harbor Light",
+          "Guest_Count": "5",
+          "Start_Time": "2024-07-13T11:30:00"
+        },
+        {
+          "Booking_ID": "SST-00008",
+          "Guest_Name": "Sophie Dupont",
+          "Experience_Type": "Eco-Tour & Birding",
+          "Boat_Name": "Pelican's Rest",
+          "Guest_Count": "2",
+          "Start_Time": "2024-07-13T08:00:00"
+        },
+        {
+          "Booking_ID": "SST-00009",
+          "Guest_Name": "Liam O'Connor",
+          "Experience_Type": "Private Fishing Charter",
+          "Boat_Name": "Blue Marlin",
+          "Guest_Count": "4",
+          "Start_Time": "2024-07-14T06:30:00"
+        },
+        {
+          "Booking_ID": "SST-00010",
+          "Guest_Name": "Isabella Rossi",
+          "Experience_Type": "Harbor Lights Cruise",
+          "Boat_Name": "Mistral",
+          "Guest_Count": "10",
+          "Start_Time": "2024-07-14T20:00:00"
+        },
+        {
+          "Booking_ID": "SST-00011",
+          "Guest_Name": "David Kim",
+          "Experience_Type": "Coastal Sightseeing",
+          "Boat_Name": "Coastal Queen",
+          "Guest_Count": "2",
+          "Start_Time": "2024-07-14T14:00:00"
+        },
+        {
+          "Booking_ID": "SST-00012",
+          "Guest_Name": "Chloe Bennett",
+          "Experience_Type": "Sunset Boat Rental",
+          "Boat_Name": "Sea Breeze",
+          "Guest_Count": "2",
+          "Start_Time": "2024-07-15T18:45:00"
+        },
+        {
+          "Booking_ID": "SST-00013",
+          "Guest_Name": "Nathaniel West",
+          "Experience_Type": "Whale Watching",
+          "Boat_Name": "Ocean Voyager",
+          "Guest_Count": "10",
+          "Start_Time": "2024-07-16T09:30:00"
+        },
+        {
+          "Booking_ID": "SST-00014",
+          "Guest_Name": "Olivia Vance",
+          "Experience_Type": "Eco-Tour & Birding",
+          "Boat_Name": "Coral Wanderer",
+          "Guest_Count": "6",
+          "Start_Time": "2024-07-16T10:00:00"
+        },
+        {
+          "Booking_ID": "SST-00015",
+          "Guest_Name": "Jackson Reed",
+          "Experience_Type": "Deep Sea Angling",
+          "Boat_Name": "Tide Runner",
+          "Guest_Count": "4",
+          "Start_Time": "2024-07-17T05:00:00"
+        }
+      ]
+    },
+    "preconditions": [
+      "Google account must be logged in.",
+      "Zapier and Slack accounts must be accessible."
+    ],
+    "reset_instructions": [
+      "Ensure Google Chrome is open and logged into the necessary accounts.",
+      "Open the Google Sheet at the specified URL.",
+      "Ensure the Zapier automation is set up and ready to run."
+    ]
+  }
+}

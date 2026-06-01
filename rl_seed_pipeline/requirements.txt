@@ -1,0 +1,4 @@
+# Python deps for the RL-seed pipeline.
+# (ffmpeg/ffprobe are system dependencies, used for video frame extraction.)
+Pillow>=10.0          # key-frame decode / downscale / base64 for the vision model
+openai>=1.40          # OpenAI-compatible vision inference (optional; only the VLM stage)

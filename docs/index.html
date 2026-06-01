@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>screen2gym — turn a screen recording into a trainable RL environment</title>
+<meta name="description" content="screen2gym compiles a raw computer-use screen recording into a resettable, gradeable reinforcement-learning environment: a deterministic+VLM pipeline emits the task and initial-state seed, and a simulated multi-app environment makes it trainable." />
+<style>
+  :root{
+    --bg:#0b1220; --bg2:#0e1729; --panel:#111c30; --panel2:#16233b;
+    --ink:#e8eef7; --muted:#93a4bd; --line:#22324c;
+    --teal:#3ad0c4; --teal2:#19a89b; --amber:#f6c177; --violet:#a78bfa; --blue:#5aa9ff;
+    --good:#43d17a; --bad:#ff6b6b;
+    --r:14px; --maxw:1120px;
+    --shadow:0 18px 50px rgba(0,0,0,.45);
+    font-synthesis:none;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(58,208,196,.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(167,139,250,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+  code,.mono{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+    background:rgba(10,17,30,.72); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; align-items:center; gap:18px; height:58px}
+  .brand{font-weight:800; letter-spacing:.3px; display:flex; align-items:center; gap:9px}
+  .brand .dot{width:12px;height:12px;border-radius:50%;
+    background:conic-gradient(from 0deg,var(--teal),var(--violet),var(--amber),var(--teal));
+    box-shadow:0 0 14px rgba(58,208,196,.6)}
+  nav .links{display:flex; gap:16px; margin-left:auto; flex-wrap:wrap}
+  nav .links a{color:var(--muted); font-size:14px; font-weight:600}
+  nav .links a:hover{color:var(--ink); text-decoration:none}
+  .ghub{border:1px solid var(--line); padding:7px 12px; border-radius:9px; color:var(--ink)!important}
+
+  /* hero */
+  header.hero{padding:74px 0 30px}
+  .kicker{color:var(--teal); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:12.5px}
+  h1{font-size:clamp(34px,5.4vw,60px); line-height:1.02; margin:.32em 0 .25em; letter-spacing:-.02em}
+  h1 .grad{background:linear-gradient(100deg,var(--teal),var(--violet) 60%,var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lede{font-size:clamp(16px,2.1vw,20px); color:var(--muted); max-width:760px}
+  .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:26px}
+  .btn{padding:11px 17px; border-radius:11px; font-weight:700; border:1px solid var(--line); color:var(--ink); cursor:pointer; background:var(--panel)}
+  .btn.primary{background:linear-gradient(100deg,var(--teal2),var(--teal)); color:#04231f; border:none}
+  .btn:hover{transform:translateY(-1px)}
+  .statbar{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:40px 0 8px}
+  .stat{background:linear-gradient(180deg,var(--panel),var(--bg2)); border:1px solid var(--line); border-radius:var(--r); padding:16px 18px}
+  .stat b{font-size:26px; display:block; letter-spacing:-.01em}
+  .stat span{color:var(--muted); font-size:12.5px}
+
+  section{padding:54px 0; border-top:1px solid var(--line)}
+  .eyebrow{color:var(--violet); font-weight:700; letter-spacing:.16em; text-transform:uppercase; font-size:12px}
+  h2{font-size:clamp(24px,3.4vw,34px); margin:.25em 0 .15em; letter-spacing:-.015em}
+  .sub{color:var(--muted); max-width:760px}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2)); border:1px solid var(--line); border-radius:var(--r); padding:20px}
+  .card h3{margin:.1em 0 .4em; font-size:18px; display:flex; align-items:center; gap:9px}
+  .pill{display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted)}
+  .pill.teal{color:var(--teal); border-color:rgba(58,208,196,.4); background:rgba(58,208,196,.08)}
+  .pill.violet{color:var(--violet); border-color:rgba(167,139,250,.4); background:rgba(167,139,250,.08)}
+  .pill.amber{color:var(--amber); border-color:rgba(246,193,119,.4); background:rgba(246,193,119,.08)}
+
+  /* pipeline player */
+  .flow{display:flex; align-items:stretch; gap:0; flex-wrap:wrap; margin-top:8px}
+  .stage{flex:1 1 150px; min-width:150px; position:relative; cursor:pointer; padding:6px}
+  .stage .box{height:100%; border:1px solid var(--line); border-radius:12px; padding:13px 13px;
+    background:var(--panel); transition:.35s; position:relative; overflow:hidden}
+  .stage .box .n{font-size:11px; color:var(--muted); font-weight:700}
+  .stage .box .t{font-weight:700; margin-top:3px; font-size:14.5px}
+  .stage .box .a{font-size:11.5px; color:var(--teal); margin-top:7px; font-family:"SF Mono",monospace}
+  .stage .box .det{font-size:11.5px; color:var(--muted); margin-top:4px}
+  .stage.active .box{border-color:var(--teal); background:linear-gradient(180deg,#10314a,var(--panel)); box-shadow:0 0 0 1px var(--teal), 0 12px 30px rgba(58,208,196,.18); transform:translateY(-3px)}
+  .stage.det .box{outline:2px solid var(--violet); outline-offset:1px}
+  .stage .det0{position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(58,208,196,.16),transparent);transform:translateX(-120%)}
+  .stage.active .det0{animation:sweep 1s ease}
+  @keyframes sweep{to{transform:translateX(120%)}}
+  .badge-det{display:inline-block;margin-left:6px;font-size:10px;padding:2px 7px;border-radius:999px}
+  .det-deterministic{background:rgba(67,209,122,.14);color:var(--good);border:1px solid rgba(67,209,122,.4)}
+  .det-vlm{background:rgba(167,139,250,.14);color:var(--violet);border:1px solid rgba(167,139,250,.4)}
+  .arrow{align-self:center; color:var(--muted); font-size:20px; padding:0 2px}
+  .playrow{display:flex; gap:12px; align-items:center; margin:18px 0 4px; flex-wrap:wrap}
+  .detail{margin-top:16px; border:1px dashed var(--line); border-radius:12px; padding:16px; background:var(--bg2); min-height:74px}
+  .detail h4{margin:0 0 6px; font-size:15px}
+  .detail .io{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; font-size:12.5px; color:var(--muted)}
+  .detail .io b{color:var(--ink)}
+
+  /* architecture */
+  .archwrap{margin-top:18px}
+  .toggle{display:inline-flex; border:1px solid var(--line); border-radius:11px; overflow:hidden; margin-bottom:8px}
+  .toggle button{background:transparent; color:var(--muted); border:none; padding:9px 16px; cursor:pointer; font-weight:700; font-size:13px}
+  .toggle button.on{background:var(--teal); color:#04231f}
+  .arch{display:grid; grid-template-columns:1fr; gap:14px}
+  .layer{border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:var(--panel)}
+  .layer .lh{font-weight:700; display:flex; align-items:center; gap:8px}
+  .nodes{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+  .node{font-size:12.5px; border:1px solid var(--line); border-radius:9px; padding:7px 11px; background:var(--bg2); color:var(--muted); font-family:"SF Mono",monospace}
+  .node b{color:var(--ink)}
+  .path-note{margin-top:8px; font-size:13px; color:var(--muted)}
+  .edge{height:26px; display:flex; align-items:center; justify-content:center; color:var(--line)}
+  .dimmed{opacity:.32; filter:saturate(.4)}
+  .hl{border-color:var(--teal)!important; color:var(--teal)!important; box-shadow:0 0 0 1px rgba(58,208,196,.4)}
+
+  /* curriculum */
+  .eps{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
+  .ep{cursor:pointer; border:1px solid var(--line); border-radius:11px; padding:10px 13px; background:var(--panel); transition:.2s; min-width:120px}
+  .ep:hover{transform:translateY(-2px)}
+  .ep.on{border-color:var(--teal); background:linear-gradient(180deg,#10314a,var(--panel)); box-shadow:0 8px 22px rgba(58,208,196,.18)}
+  .ep .id{font-weight:800; font-size:13px}
+  .ep .nm{font-size:11.5px; color:var(--muted); margin-top:2px}
+  .epbody{display:grid; grid-template-columns:1.1fr .9fr; gap:16px; margin-top:16px}
+  @media(max-width:760px){.epbody{grid-template-columns:1fr}.two{grid-template-columns:1fr}.statbar{grid-template-columns:1fr 1fr}.flow .arrow{display:none}}
+  .state-vis{display:flex; flex-direction:column; gap:10px}
+  .svrow{display:flex; align-items:center; gap:10px}
+  .svrow .lab{width:120px; color:var(--muted); font-size:12.5px}
+  .meter{flex:1; height:12px; background:var(--bg2); border:1px solid var(--line); border-radius:999px; overflow:hidden}
+  .meter > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--teal2),var(--teal)); transition:width .6s cubic-bezier(.2,.8,.2,1)}
+  .zlevel{display:flex; gap:6px}
+  .zstep{flex:1; height:12px; border-radius:6px; background:var(--bg2); border:1px solid var(--line)}
+  .zstep.on{background:linear-gradient(90deg,var(--violet),var(--blue)); border-color:transparent}
+  .checks{display:flex; flex-direction:column; gap:8px}
+  .chk{display:flex; align-items:center; gap:9px; font-size:13px; background:var(--bg2); border:1px solid var(--line); border-radius:9px; padding:8px 11px}
+  .chk .w{margin-left:auto; font-family:"SF Mono",monospace; color:var(--amber); font-size:12px}
+  .chk .tick{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(67,209,122,.16);color:var(--good);border:1px solid rgba(67,209,122,.4)}
+  .goal{font-size:13.5px; color:var(--muted); margin-top:4px}
+  .goal b{color:var(--ink)}
+
+  /* why cards */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .why{background:linear-gradient(180deg,var(--panel),var(--bg2)); border:1px solid var(--line); border-radius:var(--r); padding:18px}
+  .why .ic{font-size:20px}
+  .why h3{font-size:16px; margin:8px 0 6px}
+  .why p{font-size:13px; color:var(--muted); margin:0}
+
+  /* flywheel */
+  .flyrow{display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; margin-top:20px}
+  @media(max-width:760px){.flyrow{grid-template-columns:1fr}}
+  .wheel{position:relative; width:340px; height:340px; margin:0 auto}
+  .wheel svg{width:100%; height:100%}
+  .spoke{cursor:pointer}
+  .spoke circle{transition:.3s}
+  .spoke.on circle{filter:drop-shadow(0 0 10px rgba(58,208,196,.7))}
+  .wheel .hubtxt{font-weight:800; font-size:14px; fill:var(--ink)}
+  .fly-detail{border:1px solid var(--line); border-radius:12px; padding:18px; background:var(--panel)}
+  .fly-detail h3{margin:0 0 6px; font-size:18px}
+  .fly-detail p{color:var(--muted); margin:.3em 0}
+  .note{margin-top:14px; border-left:3px solid var(--amber); padding:8px 12px; background:rgba(246,193,119,.07); border-radius:8px; font-size:13px; color:var(--muted)}
+  .note b{color:var(--amber)}
+
+  footer{padding:40px 0 70px; color:var(--muted); font-size:13px; border-top:1px solid var(--line)}
+  .reveal{opacity:0; transform:translateY(14px); transition:.6s}
+  .reveal.in{opacity:1; transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> screen2gym</div>
+    <div class="links">
+      <a href="#what">What</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#env">Environment</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#why">Why it works</a>
+      <a href="#scale">Scale</a>
+      <a class="ghub" id="repolink" href="#">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Environment Compiler</div>
+    <h1>Turn a screen recording into a<br><span class="grad">trainable RL environment</span>.</h1>
+    <p class="lede">screen2gym takes a raw, action-labeled computer-use recording and compiles it into the two things an RL episode needs — <b>what task</b> the user performed and the <b>initial state</b> each episode resets to — then boots that seed into a live, resettable, automatically-graded multi-app environment.</p>
+    <div class="cta">
+      <a class="btn primary" href="#pipeline">See how it works</a>
+      <a class="btn" href="#curriculum">Explore the curriculum</a>
+    </div>
+    <div class="statbar">
+      <div class="stat reveal"><b id="s1">61 min</b><span>example recording compiled</span></div>
+      <div class="stat reveal"><b id="s2">1,197</b><span>input events parsed</span></div>
+      <div class="stat reveal"><b id="s3">6</b><span>resettable episodes</span></div>
+      <div class="stat reveal"><b id="s4">2 paths</b><span>real browser or pure HTTP</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow">What it is</div>
+    <h2>Two halves: a compiler, and the environment it targets</h2>
+    <p class="sub">The recording is hard to reason over directly (a 1-hour 1080p capture is ~300&nbsp;MB / ~100k frames). screen2gym splits the work cleanly so the result is cheap to produce, reproducible, and inspectable.</p>
+    <div class="two">
+      <div class="card reveal">
+        <h3><span class="pill teal">rl_seed_pipeline</span> The compiler</h3>
+        <p class="sub" style="margin-top:6px">Reads the event stream + key-frames and emits a structured <span class="mono">seed.json</span> (<b>task</b> + <b>initial_state</b>) and an episodic <span class="mono">curriculum.json</span>. Deterministic stages do the heavy lifting offline; a single targeted vision-LLM call reads exact on-screen data.</p>
+      </div>
+      <div class="card reveal">
+        <h3><span class="pill violet">rl_env</span> The target environment</h3>
+        <p class="sub" style="margin-top:6px">Boots the seed into simulated Google&nbsp;Sheets / Slack / Zapier apps that are fully resettable and gradeable, exposed through a standard Gymnasium API with a check-registry reward and an LLM success judge (with a deterministic fallback).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="wrap">
+    <div class="eyebrow">How it works · part 1</div>
+    <h2>The compile pipeline</h2>
+    <p class="sub">Press play to watch a recording flow through the stages, or click any stage for detail. Green = deterministic (no network, no key). Purple = the one vision-LLM call.</p>
+
+    <div class="playrow">
+      <button class="btn primary" id="play">▶ Play compile</button>
+      <button class="btn" id="reset">Reset</button>
+      <span class="sub" id="playhint" style="font-size:13px"></span>
+    </div>
+
+    <div class="flow" id="flow"></div>
+    <div class="detail" id="stagedetail">
+      <h4>Click a stage above</h4>
+      <p class="sub" style="margin:0">Each stage is a small, single-purpose module. The deterministic ones are the backbone; the VLM stage is small and high-signal.</p>
+    </div>
+  </div>
+</section>
+
+<section id="env">
+  <div class="wrap">
+    <div class="eyebrow">How it works · part 2</div>
+    <h2>The environment, two ways</h2>
+    <p class="sub">The simulated apps are <b>fully server-rendered</b> and reflect state on every GET; all mutations are plain <span class="mono">POST</span> + redirect. So the same apps and the same grading work whether driven by a real browser or by plain HTTP. Toggle the execution path:</p>
+    <div class="archwrap">
+      <div class="toggle">
+        <button id="tb" class="on">🖥 Browser (Playwright)</button>
+        <button id="th">⚡ Backend (HTTP)</button>
+      </div>
+      <div class="arch" id="arch">
+        <div class="layer" id="L-policy">
+          <div class="lh">Policy / agent <span class="pill">action dict or JSON</span></div>
+          <div class="nodes">
+            <div class="node"><b>navigate</b></div><div class="node"><b>add_row</b></div>
+            <div class="node"><b>create_channel</b></div><div class="node"><b>configure_automation</b></div>
+            <div class="node" id="lowlevel"><b>click / fill</b> (DOM)</div>
+          </div>
+        </div>
+        <div class="edge">▼</div>
+        <div class="layer" id="L-driver">
+          <div class="lh">Driver <span class="pill" id="driverpill">how the action reaches the app</span></div>
+          <div class="nodes">
+            <div class="node" id="n-pw"><b>Playwright</b> · clicks the form, screenshots pixels, reads the a11y tree</div>
+            <div class="node" id="n-http"><b>requests</b> · POSTs the same endpoint, snapshots rendered HTML</div>
+          </div>
+          <div class="path-note" id="pathnote"></div>
+        </div>
+        <div class="edge">▼</div>
+        <div class="layer" id="L-apps">
+          <div class="lh">Simulated apps <span class="pill amber">stdlib http.server · in-memory state</span></div>
+          <div class="nodes">
+            <div class="node"><b>/spreadsheet</b></div><div class="node"><b>/source</b></div>
+            <div class="node"><b>/slack</b></div><div class="node"><b>/zapier</b></div>
+            <div class="node"><b>POST /api/reset</b> → deterministic episode</div>
+          </div>
+        </div>
+        <div class="edge">▼</div>
+        <div class="layer" id="L-grade">
+          <div class="lh">Grader <span class="pill violet">check registry + judge</span></div>
+          <div class="nodes">
+            <div class="node"><b>reward()</b> weighted check sum → 0..1</div>
+            <div class="node"><b>is_success()</b></div>
+            <div class="node"><b>judge</b> gpt-4o-mini → deterministic fallback</div>
+            <div class="node"><b>Gymnasium</b> one env id per episode</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum">
+  <div class="wrap">
+    <div class="eyebrow">The seed in action</div>
+    <h2>One recording → an episodic curriculum</h2>
+    <p class="sub">The long session is sliced into small, independently-resettable sub-tasks. Each episode resets to the <b>cumulative state at its start</b> (via three knobs) and is graded by just its own checks — so a single sub-task is solvable on its own and a do-nothing policy scores below 1.0. Click an episode:</p>
+    <div class="eps" id="eps"></div>
+    <div class="epbody">
+      <div class="card">
+        <h3 id="ep-title">—</h3>
+        <div class="goal" id="ep-goal"></div>
+        <div style="margin-top:14px" class="eyebrow">Resets to (initial_overrides)</div>
+        <div class="state-vis" style="margin-top:10px">
+          <div class="svrow"><div class="lab">Working sheet</div><div class="meter"><i id="m-sheet"></i></div><div class="mono" id="m-sheet-l" style="width:54px;font-size:12px;color:var(--muted)"></div></div>
+          <div class="svrow"><div class="lab">Slack channels</div><div class="nodes" id="m-chan" style="margin:0"></div></div>
+          <div class="svrow"><div class="lab">Zap level</div><div class="zlevel" id="m-zap"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Graded checks (reward weights)</div>
+        <div class="checks" id="ep-checks" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow">Why it's a good approach</div>
+    <h2>Design decisions that pay off</h2>
+    <div class="grid3">
+      <div class="why reveal"><div class="ic">🧮</div><h3>Deterministic core, tiny VLM tip</h3><p>The expensive reasoning (typed-text reconstruction, app/URL phases, key-frame selection) is deterministic and free. The model is used once, on a compact high-signal evidence pack — keeping cost low and the result reproducible.</p></div>
+      <div class="why reveal"><div class="ic">🔁</div><h3>Server-rendered dual-mode</h3><p>Because the apps render from state on every request, a Playwright click and an HTTP POST hit identical logic. Grading is mode-independent, so training can run pixel-accurate or headless-fast with no divergence.</p></div>
+      <div class="why reveal"><div class="ic">🧩</div><h3>Resettable episodic curriculum</h3><p>Each sub-task resets to its own cumulative state and is graded by only its checks. That makes credit assignment clean and lets an agent train on any single step independently.</p></div>
+      <div class="why reveal"><div class="ic">🛡️</div><h3>Graceful judge fallback</h3><p>The fuzzy LLM judge always carries a deterministic substring/heuristic cross-check. If the network or key is unavailable the env still grades — it never hard-depends on an API.</p></div>
+      <div class="why reveal"><div class="ic">🔍</div><h3>Inspectable by construction</h3><p>Every stage writes an artifact (<span class="mono">evidence.json</span>, <span class="mono">seed.json</span>, <span class="mono">curriculum.json</span>). You can read exactly what the model saw and why an episode is shaped the way it is.</p></div>
+      <div class="why reveal"><div class="ic">🎛️</div><h3>Standard Gymnasium surface</h3><p>One <span class="mono">gym.make("SaltStone/E&lt;n&gt;-v0")</span> id per episode, dict observation, JSON/text action — drop-in for any RL library while the policy is typically an LLM.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="scale">
+  <div class="wrap">
+    <div class="eyebrow">Scalability &amp; autonomy · roadmap</div>
+    <h2>From one task to a self-feeding flywheel</h2>
+    <p class="sub">The brief only needs a minimal pipeline today — but the same structure is the seed of an autonomous loop. Click a stage of the flywheel:</p>
+    <div class="flyrow">
+      <div class="wheel" id="wheel"></div>
+      <div class="fly-detail">
+        <h3 id="fly-title">—</h3>
+        <p id="fly-body"></p>
+        <div class="note" id="fly-note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>screen2gym</b> — environment compiler for computer-use agents. Self-contained docs; no tracking, no external scripts.</div>
+    <div style="margin-top:8px">Example task: real-time booking alerts for <i>Salt &amp; Stone Coastal Tours</i> (Google&nbsp;Sheets → Zapier → Slack <span class="mono">#crew-alerts</span>).</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- repo link (best-effort; updated at publish) ---------- */
+document.getElementById('repolink').href = 'https://github.com/marc-saouda/screen2gym';
+
+/* ---------- count-up stats ---------- */
+function countUp(el, to, suffix, dur){
+  var start=0, t0=null;
+  function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur);
+    var v=Math.floor(start+(to-start)*(p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2));
+    el.textContent=v.toLocaleString()+suffix; if(p<1)requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+
+/* ---------- pipeline data ---------- */
+var STAGES=[
+  {n:'01', t:'Parse events', a:'events.py', kind:'deterministic',
+   det:'Reconstruct typed text · app segments · URL trail',
+   inp:'processed_events.jsonl (1,197 events)', out:'normalized timeline',
+   long:'Turns raw clicks/keystrokes into a time-ordered action list, reconstructs what was typed (Backspace/Shift/symbols), and groups contiguous actions into application segments. No ML, no network.'},
+  {n:'02', t:'Build evidence', a:'evidence.json', kind:'deterministic',
+   det:'Compact, token-efficient digest',
+   inp:'timeline', out:'evidence pack',
+   long:'Assembles a small, high-signal digest: session summary, visited URLs, reconstructed typed text, a compact action transcript, and the key-frame manifest. This is exactly what the model will see — and what you can read back.'},
+  {n:'03', t:'Select key-frames', a:'media.py', kind:'deterministic',
+   det:'Context-switch + phase-change frames',
+   inp:'timeline + screenshots/webm', out:'~12 labeled frames',
+   long:'Picks the most informative moments — the first frame, every app context-switch, each web sub-phase change — then pulls them from pre-aligned remote screenshots or extracts them from the .webm with ffmpeg, labeling each.'},
+  {n:'04', t:'VLM inference', a:'vlm.py', kind:'vlm',
+   det:'One vision-LLM call → task + initial_state',
+   inp:'evidence pack + frames', out:'seed.json',
+   long:'Sends the compact evidence pack plus the labeled key-frames to a vision model (gpt-4o). It reads exact on-screen data — table rows, the task brief, the Zap config — and emits the structured seed. Degrades to "skipped" if no key is present.'},
+  {n:'05', t:'Segment + relabel', a:'segment.py', kind:'deterministic',
+   det:'Phases → episodes · desktop → web',
+   inp:'timeline + seed', out:'episodes[]',
+   long:'Detects phases by app/URL-group, classifies each into an activity (create sheet, create channel, zap trigger/action, publish, validate), and assigns cumulative initial_overrides + grader checks. Desktop moments (WPS, Explorer) are relabeled to web equivalents.'},
+  {n:'06', t:'Assemble curriculum', a:'curriculum.json', kind:'deterministic',
+   det:'Reconcile schema + write contract',
+   inp:'seed + episodes', out:'curriculum.json',
+   long:'Standardizes the seed into the lean env-contract shape and bundles it with the episode list (plus segmentation + web-relabel debug). This file loads directly into rl_env.'}
+];
+var flow=document.getElementById('flow');
+STAGES.forEach(function(s,i){
+  if(i>0){var ar=document.createElement('div');ar.className='arrow';ar.textContent='→';flow.appendChild(ar);}
+  var d=document.createElement('div'); d.className='stage'; d.dataset.i=i;
+  d.innerHTML='<div class="box"><div class="det0"></div><div class="n">STAGE '+s.n+
+    '</div><div class="t">'+s.t+'<span class="badge-det det-'+s.kind+'">'+(s.kind==='vlm'?'VLM':'det')+
+    '</span></div><div class="a">'+s.a+'</div><div class="det">'+s.det+'</div></div>';
+  d.addEventListener('click',function(){showStage(i,true);});
+  flow.appendChild(d);
+});
+function showStage(i,manual){
+  var s=STAGES[i];
+  document.querySelectorAll('.stage').forEach(function(el){el.classList.toggle('det', +el.dataset.i===i);});
+  document.getElementById('stagedetail').innerHTML=
+    '<h4>'+s.t+' <span class="badge-det det-'+s.kind+'">'+(s.kind==='vlm'?'vision-LLM':'deterministic')+'</span></h4>'+
+    '<p class="sub" style="margin:.2em 0">'+s.long+'</p>'+
+    '<div class="io"><span>in: <b>'+s.inp+'</b></span><span>out: <b>'+s.out+'</b></span><span>module: <b class="mono">'+s.a+'</b></span></div>';
+}
+var playTimer=null;
+function clearPlay(){ if(playTimer){clearInterval(playTimer);playTimer=null;} }
+function resetFlow(){ clearPlay(); document.querySelectorAll('.stage').forEach(function(el){el.classList.remove('active');}); document.getElementById('playhint').textContent=''; }
+document.getElementById('reset').addEventListener('click',resetFlow);
+document.getElementById('play').addEventListener('click',function(){
+  resetFlow(); var i=0; var stages=document.querySelectorAll('.stage');
+  document.getElementById('playhint').textContent='compiling…';
+  playTimer=setInterval(function(){
+    if(i>0)stages[i-1].classList.remove('active');
+    if(i>=stages.length){clearPlay();document.getElementById('playhint').textContent='✓ seed.json + curriculum.json emitted';return;}
+    stages[i].classList.add('active'); showStage(i,false); i++;
+  },900);
+});
+showStage(0,false);
+
+/* ---------- architecture toggle ---------- */
+var tb=document.getElementById('tb'), th=document.getElementById('th');
+function setPath(browser){
+  tb.classList.toggle('on',browser); th.classList.toggle('on',!browser);
+  document.getElementById('n-pw').classList.toggle('hl',browser);
+  document.getElementById('n-pw').classList.toggle('dimmed',!browser);
+  document.getElementById('n-http').classList.toggle('hl',!browser);
+  document.getElementById('n-http').classList.toggle('dimmed',browser);
+  document.getElementById('lowlevel').classList.toggle('dimmed',!browser);
+  document.getElementById('driverpill').textContent = browser?'real Chromium drives the DOM':'plain HTTP hits the endpoint';
+  document.getElementById('pathnote').innerHTML = browser
+    ? 'Playwright clicks the actual form controls and submit buttons, captures a full-page <b>screenshot</b> and the <b>accessibility tree</b>. DOM-level <span class="mono">click/fill</span> actions are available here.'
+    : 'No browser needed: the driver <span class="mono">POST</span>s the same endpoint a form submit would, and snapshots the <b>rendered HTML</b>. Runs anywhere, fast — ideal for large-scale rollouts. Identical state &amp; grading.';
+}
+tb.addEventListener('click',function(){setPath(true);});
+th.addEventListener('click',function(){setPath(false);});
+setPath(true);
+
+/* ---------- curriculum ---------- */
+var EPS=[
+  {id:'E1', key:'E1_create_sheet', name:'Create sheet', title:'Create and populate the booking sheet',
+   goal:'Copy every source booking into the working sheet.',
+   rows:0, chans:['#general'], zap:0,
+   checks:[['working_sheet_populated',1.0]]},
+  {id:'E2', key:'E2_create_channel', name:'Create channel', title:'Create the Slack alerts channel',
+   goal:'Create the #crew-alerts channel.',
+   rows:15, chans:['#general'], zap:0,
+   checks:[['channel_exists',1.0]]},
+  {id:'E3', key:'E3_zap_trigger', name:'Zap trigger', title:'Configure the Zap trigger',
+   goal:'Set the trigger to Google Sheets / New Spreadsheet Row.',
+   rows:15, chans:['#general','#crew-alerts'], zap:0,
+   checks:[['trigger_configured',1.0]]},
+  {id:'E4', key:'E4_zap_action', name:'Zap action', title:'Configure the Zap Slack action',
+   goal:'Post a formatted New Booking Alert to #crew-alerts.',
+   rows:15, chans:['#general','#crew-alerts'], zap:1,
+   checks:[['action_configured',1.0]]},
+  {id:'E5', key:'E5_publish_zap', name:'Publish', title:'Publish and enable the Zap',
+   goal:'Turn the fully-configured Zap on.',
+   rows:15, chans:['#general','#crew-alerts'], zap:2,
+   checks:[['zap_enabled',1.0]]},
+  {id:'E6', key:'E6_validate', name:'Validate', title:'Validate with a new booking',
+   goal:'Add a new booking row and confirm a correct alert posts.',
+   rows:15, chans:['#general','#crew-alerts'], zap:3,
+   checks:[['new_row_added',0.4],['alert_correct',0.6]]}
+];
+var ZAPLABEL=['none','trigger','trigger + action','full · enabled'];
+var epsEl=document.getElementById('eps');
+EPS.forEach(function(e,i){
+  var d=document.createElement('div'); d.className='ep'; d.dataset.i=i;
+  d.innerHTML='<div class="id">'+e.id+'</div><div class="nm">'+e.name+'</div>';
+  d.addEventListener('click',function(){showEp(i);});
+  epsEl.appendChild(d);
+});
+function showEp(i){
+  var e=EPS[i];
+  document.querySelectorAll('.ep').forEach(function(el){el.classList.toggle('on',+el.dataset.i===i);});
+  document.getElementById('ep-title').textContent=e.id+' · '+e.title;
+  document.getElementById('ep-goal').innerHTML='<b>Goal:</b> '+e.goal;
+  var pct=Math.round(e.rows/15*100);
+  document.getElementById('m-sheet').style.width=pct+'%';
+  document.getElementById('m-sheet-l').textContent=e.rows+'/15';
+  var ch=document.getElementById('m-chan'); ch.innerHTML='';
+  e.chans.forEach(function(c){var n=document.createElement('div');n.className='node';n.style.padding='4px 9px';n.innerHTML='<b>'+c+'</b>';ch.appendChild(n);});
+  var z=document.getElementById('m-zap'); z.innerHTML='';
+  for(var k=0;k<3;k++){var s=document.createElement('div');s.className='zstep'+(k<e.zap?' on':'');z.appendChild(s);}
+  var zl=document.createElement('span'); zl.className='mono'; zl.style.cssText='font-size:11px;color:var(--muted);margin-left:6px;white-space:nowrap'; zl.textContent=ZAPLABEL[e.zap]; z.appendChild(zl);
+  var c=document.getElementById('ep-checks'); c.innerHTML='';
+  e.checks.forEach(function(ck){var d=document.createElement('div');d.className='chk';
+    d.innerHTML='<span class="tick">✓</span> <span class="mono">'+ck[0]+'</span><span class="w">w '+ck[1].toFixed(2)+'</span>';c.appendChild(d);});
+}
+showEp(0);
+
+/* ---------- flywheel ---------- */
+var FLY=[
+  {t:'1 · Compile recordings', b:'The deterministic pipeline turns each recording into an inspectable seed + curriculum — no human labeling required for the structure.',
+   note:'<b>Today:</b> this is the working, minimal system the brief asks for.'},
+  {t:'2 · Auto-label training data', b:'Because segment.py is a deterministic labeling function, every recording yields (events → episodes) and (frames → seed) pairs at scale.',
+   note:'<b>Lever:</b> the pipeline is its own data generator — bootstrap a dataset for free.'},
+  {t:'3 · Distill / fine-tune the steps', b:'Use those pairs to fine-tune models that do seed extraction and segmentation directly — cheaper, faster, and less dependent on a frontier VLM per run.',
+   note:'<b>Reward signal:</b> curriculum_runner already checks each episode is oracle-solvable AND discriminates wrong attempts — an automatic quality score for generated environments.'},
+  {t:'4 · Train agents in the envs', b:'Each environment is a verifiable reward source (grader + judge), so the generated envs RL-train computer-use agents — whose better recordings feed step 1 again.',
+   note:'<b>Honest limit:</b> full env-generation is roadmap, not done — it is gated on a multi-task corpus (today n=1). The seed/segmentation half is the immediately defensible claim.'}
+];
+var wheel=document.getElementById('wheel');
+var NS='http://www.w3.org/2000/svg';
+var svg=document.createElementNS(NS,'svg'); svg.setAttribute('viewBox','0 0 340 340');
+var cx=170, cy=170, R=120;
+// rotating highlight ring
+var ring=document.createElementNS(NS,'circle');
+ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);ring.setAttribute('r',R);
+ring.setAttribute('fill','none');ring.setAttribute('stroke','url(#g)');ring.setAttribute('stroke-width','3');
+ring.setAttribute('stroke-dasharray','6 10');ring.setAttribute('opacity','.5');
+var defs=document.createElementNS(NS,'defs');
+defs.innerHTML='<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ad0c4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>';
+svg.appendChild(defs); svg.appendChild(ring);
+// arrows around the ring (cyclic)
+var hub=document.createElementNS(NS,'g');
+var hubc=document.createElementNS(NS,'circle'); hubc.setAttribute('cx',cx);hubc.setAttribute('cy',cy);hubc.setAttribute('r',46);
+hubc.setAttribute('fill','#16233b'); hubc.setAttribute('stroke','#22324c');
+hub.appendChild(hubc);
+var hubt1=document.createElementNS(NS,'text'); hubt1.setAttribute('x',cx);hubt1.setAttribute('y',cy-4);
+hubt1.setAttribute('text-anchor','middle');hubt1.setAttribute('class','hubtxt');hubt1.textContent='data';
+var hubt2=document.createElementNS(NS,'text'); hubt2.setAttribute('x',cx);hubt2.setAttribute('y',cy+15);
+hubt2.setAttribute('text-anchor','middle');hubt2.setAttribute('class','hubtxt');hubt2.textContent='flywheel';
+svg.appendChild(hub); svg.appendChild(hubt1); svg.appendChild(hubt2);
+var spokes=[];
+FLY.forEach(function(f,i){
+  var ang=(-90+i*90)*Math.PI/180;
+  var x=cx+Math.cos(ang)*R, y=cy+Math.sin(ang)*R;
+  var g=document.createElementNS(NS,'g'); g.setAttribute('class','spoke'); g.dataset.i=i; g.style.cursor='pointer';
+  var c=document.createElementNS(NS,'circle'); c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',26);
+  c.setAttribute('fill','#111c30'); c.setAttribute('stroke','#3ad0c4'); c.setAttribute('stroke-width','2');
+  var t=document.createElementNS(NS,'text'); t.setAttribute('x',x);t.setAttribute('y',y+6);
+  t.setAttribute('text-anchor','middle');t.setAttribute('font-weight','800');t.setAttribute('font-size','18');t.setAttribute('fill','#e8eef7');
+  t.textContent=(i+1);
+  g.appendChild(c); g.appendChild(t);
+  g.addEventListener('click',function(){showFly(i);});
+  svg.appendChild(g); spokes.push(g);
+});
+wheel.appendChild(svg);
+function showFly(i){
+  spokes.forEach(function(g){g.classList.toggle('on',+g.dataset.i===i);});
+  document.getElementById('fly-title').textContent=FLY[i].t;
+  document.getElementById('fly-body').textContent=FLY[i].b;
+  document.getElementById('fly-note').innerHTML=FLY[i].note;
+}
+showFly(0);
+var flyAuto=setInterval(function(){
+  var cur=0; spokes.forEach(function(g,idx){if(g.classList.contains('on'))cur=idx;});
+  showFly((cur+1)%FLY.length);
+},3800);
+document.getElementById('wheel').addEventListener('click',function(){clearInterval(flyAuto);},{once:true});
+
+/* ---------- reveal on scroll + stats ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var statsDone=false;
+var sio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting && !statsDone){statsDone=true;
+  countUp(document.getElementById('s2'),1197,'',1100);
+  countUp(document.getElementById('s3'),6,'',900);
+}});},{threshold:.3});
+sio.observe(document.querySelector('.statbar'));
+</script>
+</body>
+</html>

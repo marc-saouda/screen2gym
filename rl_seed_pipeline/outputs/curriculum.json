@@ -1,0 +1,902 @@
+{
+  "task": {
+    "title": "Automate Booking Alerts from Google Sheets to Slack",
+    "summary": "The user set up an automation to send real-time booking alerts from a Google Sheets document to a Slack channel. This involved configuring a Zap in Zapier to trigger when a new row is added to the Google Sheet, and then sending a formatted message to a Slack channel.",
+    "goal": "Create a Zapier automation that sends new booking details from Google Sheets to a Slack channel.",
+    "domain": "business-automation",
+    "applications": [
+      "Google Chrome",
+      "Google Sheets",
+      "Zapier",
+      "Slack"
+    ],
+    "steps": [
+      "Open Google Sheets and create a new spreadsheet for bookings.",
+      "Set up a Zap in Zapier to trigger on new spreadsheet rows.",
+      "Configure the Zap to send a message to a Slack channel with booking details.",
+      "Test the Zap to ensure it sends messages correctly."
+    ],
+    "success_criteria": [
+      "A new row in Google Sheets triggers a Slack message.",
+      "The Slack message contains correct booking details.",
+      "The Zap runs successfully without errors."
+    ]
+  },
+  "initial_state": {
+    "business_context": "The user starts with a desktop environment with access to Google Chrome, WPS Office, and a pre-existing spreadsheet file. The Google account is logged in, and the Zapier and Slack accounts are accessible.",
+    "starting_application": "spreadsheet",
+    "datasets": [
+      {
+        "name": "Booking Data",
+        "sheet_title": "Booking Data",
+        "columns": [
+          "Booking_ID",
+          "Guest_Name",
+          "Experience_Type",
+          "Boat_Name",
+          "Guest_Count",
+          "Start_Time"
+        ],
+        "rows": [
+          [
+            "SST-00001",
+            "Marcus Thorne",
+            "Private Fishing Charter",
+            "Blue Marlin",
+            "4",
+            "2024-07-10T06:00:00"
+          ],
+          [
+            "SST-00002",
+            "Elena Rodriguez",
+            "Sunset Boat Rental",
+            "Sea Breeze",
+            "2",
+            "2024-07-10T18:30:00"
+          ],
+          [
+            "SST-00003",
+            "Julian Vane",
+            "Coastal Sightseeing",
+            "Coastal Queen",
+            "8",
+            "2024-07-11T10:00:00"
+          ],
+          [
+            "SST-00004",
+            "Sarah Jenkins",
+            "Whale Watching",
+            "Ocean Voyager",
+            "12",
+            "2024-07-11T09:00:00"
+          ],
+          [
+            "SST-00005",
+            "Robert Chen",
+            "Deep Sea Angling",
+            "Tide Runner",
+            "3",
+            "2024-07-12T05:30:00"
+          ],
+          [
+            "SST-00006",
+            "Amara Okafor",
+            "Sunset Boat Rental",
+            "The Salty Dog",
+            "6",
+            "2024-07-12T19:00:00"
+          ],
+          [
+            "SST-00007",
+            "Lucas Miller",
+            "Island Picnic Shuttle",
+            "Harbor Light",
+            "5",
+            "2024-07-13T11:30:00"
+          ],
+          [
+            "SST-00008",
+            "Sophie Dupont",
+            "Eco-Tour & Birding",
+            "Pelican's Rest",
+            "2",
+            "2024-07-13T08:00:00"
+          ],
+          [
+            "SST-00009",
+            "Liam O'Connor",
+            "Private Fishing Charter",
+            "Blue Marlin",
+            "4",
+            "2024-07-14T06:30:00"
+          ],
+          [
+            "SST-00010",
+            "Isabella Rossi",
+            "Harbor Lights Cruise",
+            "Mistral",
+            "10",
+            "2024-07-14T20:00:00"
+          ],
+          [
+            "SST-00011",
+            "David Kim",
+            "Coastal Sightseeing",
+            "Coastal Queen",
+            "2",
+            "2024-07-14T14:00:00"
+          ],
+          [
+            "SST-00012",
+            "Chloe Bennett",
+            "Sunset Boat Rental",
+            "Sea Breeze",
+            "2",
+            "2024-07-15T18:45:00"
+          ],
+          [
+            "SST-00013",
+            "Nathaniel West",
+            "Whale Watching",
+            "Ocean Voyager",
+            "10",
+            "2024-07-16T09:30:00"
+          ],
+          [
+            "SST-00014",
+            "Olivia Vance",
+            "Eco-Tour & Birding",
+            "Coral Wanderer",
+            "6",
+            "2024-07-16T10:00:00"
+          ],
+          [
+            "SST-00015",
+            "Jackson Reed",
+            "Deep Sea Angling",
+            "Tide Runner",
+            "4",
+            "2024-07-17T05:00:00"
+          ]
+        ]
+      }
+    ],
+    "accounts": [
+      "Google account logged in",
+      "Zapier account accessible",
+      "Slack account accessible"
+    ],
+    "target_slack_channel": "#crew-alerts",
+    "slack_channels": [
+      "#general",
+      "#crew-alerts"
+    ],
+    "automation_spec": {
+      "trigger": "Google Sheets - New Spreadsheet Row (sheet: 'Booking Data')",
+      "action": "Slack - Send Channel Message (channel: #crew-alerts, bot 'Zapier')",
+      "bot_name": "Zapier",
+      "message_title": "New Booking Alert",
+      "message_template": ":rotating_light: *New Booking Alert*\n*Guest Name:* {Guest_Name}\n*Group Size:* {Guest_Count}\n*Experience Type:* {Experience_Type}\n*Boat Assignment:* {Boat_Name}\n*Scheduled Start Time:* {Start_Time}\nPlease prepare the boat and crew accordingly."
+    }
+  },
+  "episodes": [
+    {
+      "id": "E1_create_sheet",
+      "activity": "create_sheet",
+      "app": "spreadsheet",
+      "title": "Create and populate the booking sheet",
+      "goal": "Create the 'Booking Data' spreadsheet with columns (Booking_ID, Guest_Name, Experience_Type, Boat_Name, Guest_Count, Start_Time) and enter all 15 booking records from the source data.",
+      "success_criteria": [
+        "A working sheet titled 'Booking Data' exists.",
+        "It contains all 15 source booking rows with matching column values."
+      ],
+      "time_range": [
+        73.0,
+        420.7
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 0,
+        "channels": [
+          "#general"
+        ],
+        "automation_level": "none"
+      },
+      "checks": [
+        "working_sheet_populated"
+      ],
+      "reward_weights": {
+        "working_sheet_populated": 1.0
+      },
+      "produced_artifacts": [
+        "sheet"
+      ]
+    },
+    {
+      "id": "E2_create_channel",
+      "activity": "create_channel",
+      "app": "slack",
+      "title": "Create the Slack alerts channel",
+      "goal": "Create the #crew-alerts Slack channel that booking alerts post to.",
+      "success_criteria": [
+        "A Slack channel named #crew-alerts exists in the workspace."
+      ],
+      "time_range": [
+        424.7,
+        3623.0
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 15,
+        "channels": [
+          "#general"
+        ],
+        "automation_level": "none"
+      },
+      "checks": [
+        "channel_exists"
+      ],
+      "reward_weights": {
+        "channel_exists": 1.0
+      },
+      "produced_artifacts": [
+        "channel"
+      ]
+    },
+    {
+      "id": "E3_zap_trigger",
+      "activity": "zap_trigger",
+      "app": "zapier",
+      "title": "Configure the Zap trigger",
+      "goal": "Create a Zap whose trigger is Google Sheets 'New Spreadsheet Row' on the 'Booking Data' sheet.",
+      "success_criteria": [
+        "The automation trigger is Google Sheets / New Spreadsheet Row on the booking sheet."
+      ],
+      "time_range": [
+        492.1,
+        662.5
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 15,
+        "channels": [
+          "#general",
+          "#crew-alerts"
+        ],
+        "automation_level": "none"
+      },
+      "checks": [
+        "trigger_configured"
+      ],
+      "reward_weights": {
+        "trigger_configured": 1.0
+      },
+      "produced_artifacts": [
+        "trigger"
+      ]
+    },
+    {
+      "id": "E4_zap_action",
+      "activity": "zap_action",
+      "app": "zapier",
+      "title": "Configure the Zap Slack action",
+      "goal": "Add a Slack 'Send Channel Message' action that posts a formatted New Booking Alert to #crew-alerts.",
+      "success_criteria": [
+        "The action targets #crew-alerts.",
+        "The message template includes guest name, group size, experience type, boat assignment, start time, and a prepare-the-crew instruction."
+      ],
+      "time_range": [
+        604.0,
+        948.9
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 15,
+        "channels": [
+          "#general",
+          "#crew-alerts"
+        ],
+        "automation_level": "trigger"
+      },
+      "checks": [
+        "action_configured"
+      ],
+      "reward_weights": {
+        "action_configured": 1.0
+      },
+      "produced_artifacts": [
+        "action"
+      ]
+    },
+    {
+      "id": "E5_publish_zap",
+      "activity": "publish_zap",
+      "app": "zapier",
+      "title": "Publish and enable the Zap",
+      "goal": "Turn the fully-configured Zap on so it runs automatically.",
+      "success_criteria": [
+        "The automation is enabled and fully configured."
+      ],
+      "time_range": [
+        960.2,
+        3629.5
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 15,
+        "channels": [
+          "#general",
+          "#crew-alerts"
+        ],
+        "automation_level": "trigger_action"
+      },
+      "checks": [
+        "zap_enabled"
+      ],
+      "reward_weights": {
+        "zap_enabled": 1.0
+      },
+      "produced_artifacts": [
+        "published"
+      ]
+    },
+    {
+      "id": "E6_validate",
+      "activity": "validate",
+      "app": "spreadsheet",
+      "title": "Validate with a new booking",
+      "goal": "Add a new booking row and confirm a correctly formatted alert posts to #crew-alerts.",
+      "success_criteria": [
+        "A new booking row is added beyond the seeded rows.",
+        "A correct 'New Booking Alert' for that booking appears in #crew-alerts."
+      ],
+      "time_range": [
+        2064.0,
+        3656.5
+      ],
+      "initial_overrides": {
+        "working_sheet_rows": 15,
+        "channels": [
+          "#general",
+          "#crew-alerts"
+        ],
+        "automation_level": "full_enabled"
+      },
+      "checks": [
+        "new_row_added",
+        "alert_correct"
+      ],
+      "reward_weights": {
+        "new_row_added": 0.4,
+        "alert_correct": 0.6
+      },
+      "produced_artifacts": []
+    }
+  ],
+  "segmentation": {
+    "n_episodes": 6,
+    "phases": [
+      {
+        "key": "postwork",
+        "activity": "source_review",
+        "start": 17.5,
+        "end": 17.5,
+        "n_actions": 1
+      },
+      {
+        "key": "Windows Explorer",
+        "activity": "source_review",
+        "start": 17.9,
+        "end": 17.9,
+        "n_actions": 1
+      },
+      {
+        "key": "WPS Office",
+        "activity": "source_review",
+        "start": 23.9,
+        "end": 51.2,
+        "n_actions": 14
+      },
+      {
+        "key": "Windows Explorer",
+        "activity": "source_review",
+        "start": 52.7,
+        "end": 52.7,
+        "n_actions": 1
+      },
+      {
+        "key": "web",
+        "activity": "other",
+        "start": 54.0,
+        "end": 66.8,
+        "n_actions": 6
+      },
+      {
+        "key": "google_sheets",
+        "activity": "create_sheet",
+        "start": 73.0,
+        "end": 108.2,
+        "n_actions": 9
+      },
+      {
+        "key": "WPS Office",
+        "activity": "source_review",
+        "start": 114.0,
+        "end": 114.0,
+        "n_actions": 1
+      },
+      {
+        "key": "google_sheets",
+        "activity": "create_sheet",
+        "start": 115.5,
+        "end": 420.7,
+        "n_actions": 129
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 424.7,
+        "end": 483.2,
+        "n_actions": 15
+      },
+      {
+        "key": "search",
+        "activity": "other",
+        "start": 484.4,
+        "end": 489.7,
+        "n_actions": 2
+      },
+      {
+        "key": "zapier",
+        "activity": "zap_trigger",
+        "start": 492.1,
+        "end": 494.5,
+        "n_actions": 2
+      },
+      {
+        "key": "zapier_editor",
+        "activity": "zap_trigger",
+        "start": 498.3,
+        "end": 572.3,
+        "n_actions": 21
+      },
+      {
+        "key": "zapier",
+        "activity": "zap_trigger",
+        "start": 576.2,
+        "end": 579.9,
+        "n_actions": 2
+      },
+      {
+        "key": "oauth",
+        "activity": "other",
+        "start": 585.5,
+        "end": 593.4,
+        "n_actions": 2
+      },
+      {
+        "key": "zapier_editor",
+        "activity": "zap_action",
+        "start": 604.0,
+        "end": 661.6,
+        "n_actions": 22
+      },
+      {
+        "key": "zapier",
+        "activity": "zap_trigger",
+        "start": 662.5,
+        "end": 662.5,
+        "n_actions": 1
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 665.8,
+        "end": 674.3,
+        "n_actions": 2
+      },
+      {
+        "key": "zapier_editor",
+        "activity": "zap_action",
+        "start": 677.9,
+        "end": 948.9,
+        "n_actions": 78
+      },
+      {
+        "key": "zapier_publish",
+        "activity": "publish_zap",
+        "start": 960.2,
+        "end": 2039.4,
+        "n_actions": 113
+      },
+      {
+        "key": "zapier_template",
+        "activity": "document",
+        "start": 2040.5,
+        "end": 2053.0,
+        "n_actions": 3
+      },
+      {
+        "key": "zapier_publish",
+        "activity": "publish_zap",
+        "start": 2055.7,
+        "end": 2055.7,
+        "n_actions": 1
+      },
+      {
+        "key": "zapier_template",
+        "activity": "document",
+        "start": 2056.0,
+        "end": 2059.2,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 2059.5,
+        "end": 2063.5,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 2064.0,
+        "end": 3402.8,
+        "n_actions": 629
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3404.3,
+        "end": 3408.7,
+        "n_actions": 2
+      },
+      {
+        "key": "zapier_template",
+        "activity": "document",
+        "start": 3409.3,
+        "end": 3409.3,
+        "n_actions": 1
+      },
+      {
+        "key": "zapier_publish",
+        "activity": "publish_zap",
+        "start": 3412.0,
+        "end": 3436.6,
+        "n_actions": 11
+      },
+      {
+        "key": "zapier_runs",
+        "activity": "validate",
+        "start": 3437.0,
+        "end": 3455.3,
+        "n_actions": 13
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3456.0,
+        "end": 3481.6,
+        "n_actions": 12
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3482.0,
+        "end": 3484.4,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3485.1,
+        "end": 3488.3,
+        "n_actions": 4
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3488.7,
+        "end": 3491.7,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3492.5,
+        "end": 3493.4,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3494.5,
+        "end": 3494.5,
+        "n_actions": 1
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3494.8,
+        "end": 3496.6,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3498.5,
+        "end": 3500.0,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3501.0,
+        "end": 3502.2,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3504.2,
+        "end": 3508.4,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3508.7,
+        "end": 3511.4,
+        "n_actions": 3
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3513.4,
+        "end": 3519.8,
+        "n_actions": 4
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3520.0,
+        "end": 3523.3,
+        "n_actions": 3
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3525.0,
+        "end": 3527.3,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3527.5,
+        "end": 3533.8,
+        "n_actions": 4
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3538.2,
+        "end": 3545.3,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3545.5,
+        "end": 3552.8,
+        "n_actions": 5
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3557.5,
+        "end": 3557.5,
+        "n_actions": 1
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3558.6,
+        "end": 3561.2,
+        "n_actions": 3
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3562.8,
+        "end": 3563.8,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3565.6,
+        "end": 3569.0,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3573.4,
+        "end": 3575.7,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3576.3,
+        "end": 3587.9,
+        "n_actions": 4
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3589.5,
+        "end": 3590.5,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3591.4,
+        "end": 3594.6,
+        "n_actions": 4
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3596.0,
+        "end": 3598.1,
+        "n_actions": 3
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3599.6,
+        "end": 3600.4,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3602.4,
+        "end": 3603.2,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3605.0,
+        "end": 3606.2,
+        "n_actions": 2
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3608.2,
+        "end": 3609.6,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3611.4,
+        "end": 3612.9,
+        "n_actions": 3
+      },
+      {
+        "key": "google_sheets",
+        "activity": "validate",
+        "start": 3615.3,
+        "end": 3616.2,
+        "n_actions": 2
+      },
+      {
+        "key": "slack",
+        "activity": "create_channel",
+        "start": 3617.9,
+        "end": 3623.0,
+        "n_actions": 3
+      },
+      {
+        "key": "zapier_runs",
+        "activity": "validate",
+        "start": 3623.8,
+        "end": 3623.8,
+        "n_actions": 1
+      },
+      {
+        "key": "zapier_publish",
+        "activity": "publish_zap",
+        "start": 3625.0,
+        "end": 3629.5,
+        "n_actions": 3
+      },
+      {
+        "key": "zapier_runs",
+        "activity": "validate",
+        "start": 3630.9,
+        "end": 3656.5,
+        "n_actions": 14
+      }
+    ]
+  },
+  "web_relabel": {
+    "policy": "web-only; desktop segments relabeled to web at the semantic layer",
+    "desktop_seconds": 27.4,
+    "web_seconds": 3629.1,
+    "desktop_fraction": 0.0075,
+    "segments": [
+      {
+        "window": "postwork",
+        "time_range": [
+          17.5,
+          17.5
+        ],
+        "duration": 0.0,
+        "n_actions": 1,
+        "web_app": "instructions",
+        "web_route": "/brief",
+        "note": "The task brief is presented as an in-app instructions panel."
+      },
+      {
+        "window": "Windows Explorer",
+        "time_range": [
+          17.9,
+          17.9
+        ],
+        "duration": 0.0,
+        "n_actions": 1,
+        "web_app": "spreadsheet",
+        "web_route": "/source",
+        "note": "Opening the source file is relabeled to navigating to the read-only source spreadsheet URL."
+      },
+      {
+        "window": "WPS Office",
+        "time_range": [
+          23.9,
+          51.2
+        ],
+        "duration": 27.4,
+        "n_actions": 14,
+        "web_app": "spreadsheet",
+        "web_route": "/source",
+        "note": "Source booking data, viewed as a read-only web spreadsheet instead of the desktop WPS Office file."
+      },
+      {
+        "window": "Windows Explorer",
+        "time_range": [
+          52.7,
+          52.7
+        ],
+        "duration": 0.0,
+        "n_actions": 1,
+        "web_app": "spreadsheet",
+        "web_route": "/source",
+        "note": "Opening the source file is relabeled to navigating to the read-only source spreadsheet URL."
+      },
+      {
+        "window": "WPS Office",
+        "time_range": [
+          114.0,
+          114.0
+        ],
+        "duration": 0.0,
+        "n_actions": 1,
+        "web_app": "spreadsheet",
+        "web_route": "/source",
+        "note": "Source booking data, viewed as a read-only web spreadsheet instead of the desktop WPS Office file."
+      }
+    ],
+    "routes": {
+      "source_data": "/source",
+      "working_sheet": "/spreadsheet",
+      "brief": "/brief"
+    }
+  },
+  "provenance": {
+    "duration_seconds": 3656.5,
+    "n_events": 1197,
+    "policy": "web-only; desktop relabeled to web; episodic curriculum"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "task": {
+    "title": "Build a Zapier automation that posts real-time booking alerts to Slack from a Google Sheet",
+    "summary": "For the business 'Salt & Stone Coastal Tours', set up an end-to-end no-code automation so that whenever a new booking is added to a Google Sheet, a formatted alert is posted to a Slack channel for the dock crew. The user recreates a bookings spreadsheet in Google Sheets from a local starter file, creates/uses a Slack channel (#crew-alerts), builds and publishes a Zapier Zap (Google Sheets 'New Spreadsheet Row' -> Slack 'Send Channel Message'), then validates it by adding booking rows and confirming each one triggers a successful Slack message.",
+    "goal": "A published Zap that, for every new row in the 'Salt and Stone Booking' Google Sheet, sends a clearly formatted booking alert to the Slack #crew-alerts channel.",
+    "domain": "business-automation (no-code workflow / iPaaS)",
+    "applications": [
+      "Postwork (task-harness app showing the brief)",
+      "WPS Office Spreadsheets (local source data: salt_stone_bookings_starter)",
+      "Windows Explorer",
+      "Google Chrome",
+      "Google Sheets (docs.google.com)",
+      "Slack (web app)",
+      "Zapier (editor)"
+    ],
+    "steps": [
+      "Read the task brief in the Postwork app.",
+      "Open the local starter spreadsheet 'salt_stone_bookings_starter' in WPS Office to see the source booking data and column schema.",
+      "In Chrome, open Google Sheets and create a new spreadsheet titled 'Salt and Stone Booking'.",
+      "Add the column headers (Booking_ID, Guest_Name, Experience_Type, Boat_Name, Guest_Count, Start_Time) and enter the first booking row.",
+      "Open Slack and ensure a #crew-alerts channel exists for the dock crew.",
+      "Open Zapier and create a Zap named 'Salt and Stone Zap'.",
+      "Configure the trigger: Google Sheets -> 'New Spreadsheet Row', connect the Google account (OAuth) and select the 'Salt and Stone Booking' spreadsheet/worksheet.",
+      "Configure the action: Slack -> 'Send Channel Message', connect Slack (OAuth), choose channel #crew-alerts, and compose a 'New Booking Alert' message mapping booking fields (Guest Name, Group Size, Experience Type, Boat/Vessel, Start Time) plus the line 'Please prepare the boat and crew accordingly'. Send as bot.",
+      "Test and publish the Zap.",
+      "Validate end-to-end by adding the remaining booking rows to the Google Sheet and confirming the Zap run history shows successful runs that posted messages to Slack."
+    ],
+    "success_criteria": [
+      "A Google Sheet named 'Salt and Stone Booking' exists containing the booking columns and rows.",
+      "A Slack channel named #crew-alerts exists in the workspace.",
+      "A Zap exists and is PUBLISHED with trigger = Google Sheets 'New Spreadsheet Row' on that sheet and action = Slack 'Send Channel Message' to #crew-alerts.",
+      "The action message contains a 'New Booking Alert' with the booking details mapped from the trigger row.",
+      "Adding a new row to the sheet produces a successful Zap run that posts the alert to #crew-alerts (verified in Zap run history / Slack channel)."
+    ]
+  },
+  "initial_state": {
+    "narrative": "Every RL episode resets to a Windows desktop with the Postwork task-harness in the foreground showing the project brief 'Real-time Booking Alerts for Salt & Stone Coastal Tours'. A local starter spreadsheet of 15 bookings (the source-of-truth data) is available in WPS Office / on disk. The user is already signed in to the accounts required to complete the task (Google, Slack, Zapier), but NOTHING has been built yet: no Google Sheet, no Slack channel, and no Zap exist at t=0. The agent must produce all of those from the starter data and the brief.",
+    "starting_screen": "Postwork app, 'Current Project - Business Automation', titled 'Real-time Booking Alerts for Salt & Stone Coastal Tours', with a 'Currently Recording' panel (Session ID 006897b3-9b62-4c88-a0ef-0df904d9d46d). Windows taskbar shows Chrome, WPS Office, File Explorer, and a search box. Resolution 1920x1080.",
+    "task_brief_text": "Salt & Stone Coastal Tours is a boutique operator offering private fishing charters and sunset [tours/rentals]. The founder is currently missing urgent booking details because notifications are buried in a busy email inbox, leading to delays in boat preparation. They need a straightforward [no-code] automation to funnel new booking data directly into a Slack channel for the dock crew. (A collapsed 'Requirements' section is present but was not expanded in the recording.)",
+    "environment": {
+      "os": "Windows (10/11)",
+      "screen_resolution": "1920x1080",
+      "applications_available": [
+        "Google Chrome (default browser)",
+        "WPS Office Spreadsheets (running in guest mode)",
+        "Windows Explorer / File Explorer",
+        "Postwork task harness"
+      ],
+      "accounts_and_auth": [
+        {
+          "service": "Google",
+          "purpose": "Create/edit Google Sheets; OAuth scopes drive + spreadsheets + email granted to Zapier (GoogleSheetsV2CLIAPI).",
+          "state": "logged in (account avatar 'A' visible in Chrome)"
+        },
+        {
+          "service": "Slack",
+          "purpose": "Destination workspace for booking alerts; OAuth granted to Zapier (SlackCLIAPI).",
+          "state": "logged in",
+          "workspace": "main-dyd9530.slack.com (team id T0B0HV9QQBZ)"
+        },
+        {
+          "service": "Zapier",
+          "purpose": "Build/publish the Zap.",
+          "state": "logged in",
+          "account": "Amanuel B. (zapier account id 27193866)"
+        }
+      ]
+    },
+    "resources": [
+      {
+        "name": "salt_stone_bookings_starter",
+        "type": "file (local spreadsheet)",
+        "location": "Local disk, opened via Windows Explorer in WPS Office Spreadsheets",
+        "state": "present (GIVEN at t=0)",
+        "details": "Source-of-truth booking data the agent must transfer into Google Sheets. Worksheet/tab name 'salt_stone_bookings_starter'. See initial_state.seed_data for the full schema and rows."
+      },
+      {
+        "name": "Salt and Stone Booking (Google Sheet)",
+        "type": "spreadsheet (Google Sheets)",
+        "location": "https://docs.google.com/spreadsheets/d/ (created during the task)",
+        "state": "to_be_created (ABSENT at t=0)",
+        "details": "Agent must create a new Google Sheet, title it 'Salt and Stone Booking', add the headers, and populate the booking rows. This sheet becomes the Zap trigger source."
+      },
+      {
+        "name": "#crew-alerts (Slack channel)",
+        "type": "slack_channel",
+        "location": "Slack workspace main-dyd9530 (team T0B0HV9QQBZ)",
+        "state": "to_be_created_or_present",
+        "details": "Target channel for the dock-crew booking alerts. In the recording the channel is named 'crew-alerts'."
+      },
+      {
+        "name": "Salt and Stone Zap",
+        "type": "zapier_zap",
+        "location": "https://zapier.com/editor/ (created during the task)",
+        "state": "to_be_created (ABSENT at t=0)",
+        "details": "Two-step Zap. Trigger: Google Sheets 'New Spreadsheet Row' (Instant) on the Salt and Stone Booking sheet. Action: Slack 'Send Channel Message' to #crew-alerts with a 'New Booking Alert' message; Send as bot = Yes, Bot Name = Zapier."
+      }
+    ],
+    "seed_data": {
+      "name": "salt_stone_bookings_starter",
+      "source": "WPS Office local spreadsheet (the GIVEN source-of-truth dataset)",
+      "note": "The WPS source spells the third column 'Experience_Type'; the user mistyped the Google Sheets header as 'Experiance_Type'. Use the source spelling. Start_Time values are ISO-8601 local datetimes.",
+      "schema": ["Booking_ID", "Guest_Name", "Experience_Type", "Boat_Name", "Guest_Count", "Start_Time"],
+      "rows": [
+        {"Booking_ID": "SST-00001", "Guest_Name": "Marcus Thorne", "Experience_Type": "Private Fishing Charter", "Boat_Name": "Blue Marlin", "Guest_Count": 4, "Start_Time": "2024-07-10T06:00:00"},
+        {"Booking_ID": "SST-00002", "Guest_Name": "Elena Rodriguez", "Experience_Type": "Sunset Boat Rental", "Boat_Name": "Sea Breeze", "Guest_Count": 2, "Start_Time": "2024-07-10T18:30:00"},
+        {"Booking_ID": "SST-00003", "Guest_Name": "Julian Vane", "Experience_Type": "Coastal Sightseeing", "Boat_Name": "Coastal Queen", "Guest_Count": 8, "Start_Time": "2024-07-11T10:00:00"},
+        {"Booking_ID": "SST-00004", "Guest_Name": "Sarah Jenkins", "Experience_Type": "Whale Watching", "Boat_Name": "Ocean Voyager", "Guest_Count": 12, "Start_Time": "2024-07-11T09:00:00"},
+        {"Booking_ID": "SST-00005", "Guest_Name": "Robert Chen", "Experience_Type": "Deep Sea Angling", "Boat_Name": "Tide Runner", "Guest_Count": 3, "Start_Time": "2024-07-12T05:30:00"},
+        {"Booking_ID": "SST-00006", "Guest_Name": "Amara Okafor", "Experience_Type": "Sunset Boat Rental", "Boat_Name": "The Salty Dog", "Guest_Count": 6, "Start_Time": "2024-07-12T19:00:00"},
+        {"Booking_ID": "SST-00007", "Guest_Name": "Lucas Miller", "Experience_Type": "Island Picnic Shuttle", "Boat_Name": "Harbor Light", "Guest_Count": 5, "Start_Time": "2024-07-13T11:30:00"},
+        {"Booking_ID": "SST-00008", "Guest_Name": "Sophie Dupont", "Experience_Type": "Eco-Tour & Birding", "Boat_Name": "Pelican's Rest", "Guest_Count": 4, "Start_Time": "2024-07-13T08:00:00"},
+        {"Booking_ID": "SST-00009", "Guest_Name": "Liam O'Connor", "Experience_Type": "Private Fishing Charter", "Boat_Name": "Blue Marlin", "Guest_Count": 2, "Start_Time": "2024-07-14T06:30:00"},
+        {"Booking_ID": "SST-00010", "Guest_Name": "Isabella Rossi", "Experience_Type": "Harbor Lights Cruise", "Boat_Name": "Mistral", "Guest_Count": 10, "Start_Time": "2024-07-14T20:00:00"},
+        {"Booking_ID": "SST-00011", "Guest_Name": "David Kim", "Experience_Type": "Coastal Sightseeing", "Boat_Name": "Coastal Queen", "Guest_Count": 7, "Start_Time": "2024-07-15T14:00:00"},
+        {"Booking_ID": "SST-00012", "Guest_Name": "Chloe Bennett", "Experience_Type": "Sunset Boat Rental", "Boat_Name": "Sea Breeze", "Guest_Count": 2, "Start_Time": "2024-07-15T18:45:00"},
+        {"Booking_ID": "SST-00013", "Guest_Name": "Nathaniel West", "Experience_Type": "Whale Watching", "Boat_Name": "Ocean Voyager", "Guest_Count": 10, "Start_Time": "2024-07-16T09:30:00"},
+        {"Booking_ID": "SST-00014", "Guest_Name": "Olivia Vance", "Experience_Type": "Eco-Tour & Birding", "Boat_Name": "Coral Wanderer", "Guest_Count": 6, "Start_Time": "2024-07-16T10:00:00"},
+        {"Booking_ID": "SST-00015", "Guest_Name": "Jackson Reed", "Experience_Type": "Deep Sea Angling", "Boat_Name": "Tide Runner", "Guest_Count": 4, "Start_Time": "2024-07-17T05:00:00"}
+      ]
+    },
+    "target_message_template": {
+      "channel": "#crew-alerts",
+      "title": "New Booking Alert",
+      "fields_mapped_from_trigger": ["Guest_Name (Name)", "Guest_Count (Group Size)", "Experience_Type", "Boat_Name (Boat Assignment / Vessel)", "Start_Time (Schedule / Start Time)"],
+      "closing_line": "Please prepare the boat and crew accordingly",
+      "send_as_bot": true,
+      "bot_name": "Zapier"
+    },
+    "preconditions": [
+      "User is signed in to Google, Slack (workspace main-dyd9530), and Zapier before the episode starts.",
+      "The 'salt_stone_bookings_starter' file is present locally and openable in WPS Office.",
+      "No 'Salt and Stone Booking' Google Sheet exists yet.",
+      "No 'Salt and Stone Zap' exists yet in Zapier.",
+      "Internet access to docs.google.com, slack.com, and zapier.com is available."
+    ],
+    "reset_instructions": [
+      "Provision a Windows VM at 1920x1080 with Chrome, WPS Office, and File Explorer.",
+      "Place the starter spreadsheet (seed_data above) on disk as 'salt_stone_bookings_starter.xlsx'.",
+      "Pre-authenticate the browser sessions / store OAuth tokens for the Google, Slack, and Zapier test accounts.",
+      "Ensure the Google Drive contains NO sheet named 'Salt and Stone Booking', the Zapier account has NO Zap named 'Salt and Stone Zap', and (optionally) the Slack workspace has NO #crew-alerts channel.",
+      "Display the task brief (Postwork) or pass it to the agent as the instruction.",
+      "Optionally seed Slack with the dock-crew members so the channel has an audience."
+    ]
+  },
+  "provenance": {
+    "session_id": "006897b3-9b62-4c88-a0ef-0df904d9d46d",
+    "video": "006897b3-9b62-4c88-a0ef-0df904d9d46d.webm (1920x1080, vp9, ~3657s)",
+    "events_file": "006897b3-9b62-4c88-a0ef-0df904d9d46d_processed_events.jsonl (1197 events)",
+    "produced_by": "rl_seed_pipeline (deterministic event-analysis + key-frame sampling + vision-language inference)",
+    "key_evidence": {
+      "task_brief": "first frame (Postwork)",
+      "source_data": "WPS Office 'salt_stone_bookings_starter' (t~24-51s)",
+      "google_sheet_id": "1sIHlIUCm51Y4UO6xeemoc9h5voXQIw9KRguHA9-nRrg",
+      "zap_id": "362381996",
+      "zap_published": "t~975s (v1 in use)",
+      "validation": "Zap run history shows 14 runs, all 'Successful' (t~3400-3656s)",
+      "related_template": "zapier.com/templates/details/real-time-booking-alerts-to-slack-from-sheets-6afe67"
+    }
+  }
+}
